@@ -7,7 +7,7 @@
   <title>Library</title>
   <link rel="stylesheet" href="./styles/reset.css">
   <link rel="stylesheet" href="./styles/style.css">
-  <script src="./library.js"></script>
+  <script type="module" src="./js/library.js"></script>
 </head>
 
 <body>
@@ -18,8 +18,33 @@
       <img src="./icons/plus.svg" alt="plus">
     </div>
     <div id="leftbar-categories-items">
-      <img src="./icons/book.svg" alt="book">
-      <p>All Books</p>
+      <a id="addButton" href="#"><img id="sss" src="./icons/book.svg" alt="book"></a>
+      <!-- .....................modal related code:........................ -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <div id="modal-content-form">
+            <!-- <form action="#" id="form" onsubmit="event.preventDefault();submitForm()"> -->
+            <form action="#" id="form" onsubmit="event.preventDefault();">
+              <label for="title">Title: <span aria-label="required"></span></label>
+              <input type="text" class="form_inputs" id="title" name="title" minlength="3" maxlength="79">
+              <label for="author">Author: <span aria-label="required"></span></label>
+              <input type="text" class="form_inputs" id="author" name="author" minlength="3" maxlength="79">
+              <label for="pages">Pages: <span aria-label="required"></span></label>
+              <input type="text" class="form_inputs" id="pages" name="pages" minlength="3" maxlength="79">
+              <label for="read">Read: <span aria-label="required"></span></label>
+              <input type="text" class="form_inputs" id="read" name="read" minlength="3" maxlength="79">
+              <label for="img_link_text">Image Link Text: <span aria-label="required"></span></label>
+              <input type="text" class="form_inputs" id="cover" name="cover" minlength="3" maxlength="79"
+              <label for="img_url">Image Url: <span aria-label="required"></span></label>
+              <input type="text" class="form_inputs" id="cover" name="cover" minlength="3" maxlength="79"
+            </form>
+              <button id="form_button" form="form" type="submit">Create Account</button>
+          </div>
+          <span class="close">&times;</span>
+        </div>
+      </div>
+      <!-- .....................model related code......................... ending here... -->
+      <p class="leftbar-categories-items-books">All Books</p>
     </div>
 
   </div>
@@ -28,15 +53,42 @@
       <h1>A Bookish Galaxy...</h1>
     </div>
     <div id="main-body">
+      <!-- Cards will be created via DOM...
+       Cards created via DOM will be like:
+       ...............................................................
+      <div class="card">
+          <img src="./images/5172496.jpg" alt="Avatar">
+          <div class="card-right-div">
+            <h4><b>Getting started with adobe digital editions</b></h4>
+            <div class="card-right-div-paras">
+              <p><span>By: </span>Interior Designer</p>
+              <p><span>Pages:</span> 190 / 313</p>
+              <p><span>Read:</span> No</p>
+              <p><span>Cover:</span>Image by <a
+                  href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+              </p>
+            </div>
+            <div class="card-controls">
+              <img class="card-controls-remove-icons" src="./icons/close-thick.svg" alt="close-thick">
+              <div class="card-controls-read-checks">
+                <input type="checkbox" id="status">
+                <label for="status">Read</label>
+              </div>
+            </div>
+          </div>
+        </div>
+       .............................................................. -->
       <div class="card">
         <img src="./images/5172496.jpg" alt="Avatar">
         <div class="card-right-div">
-          <h4><b>Getting started with adobe digital editions</b></h4>
+          <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
             <p><span>Pages:</span> 190 / 313</p>
             <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a></p>
+            <p><span>Cover:</span>Image by <a
+                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            </p>
           </div>
           <div class="card-controls">
             <img class="card-controls-remove-icons" src="./icons/close-thick.svg" alt="close-thick">
@@ -50,12 +102,14 @@
       <div class="card">
         <img src="./images/5172496.jpg" alt="Avatar">
         <div class="card-right-div">
-          <h4><b>Getting started with adobe digital editions</b></h4>
+          <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
             <p><span>Pages:</span> 190 / 313</p>
             <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a></p>
+            <p><span>Cover:</span>Image by <a
+                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            </p>
 
           </div>
           <div class="card-controls">
@@ -71,12 +125,14 @@
       <div class="card">
         <img src="./images/5172496.jpg" alt="Avatar">
         <div class="card-right-div">
-          <h4><b>Getting started with adobe digital editions</b></h4>
+          <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
             <p><span>Pages:</span> 190 / 313</p>
             <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a></p>
+            <p><span>Cover:</span>Image by <a
+                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            </p>
 
           </div>
           <div class="card-controls">
@@ -91,12 +147,14 @@
       <div class="card">
         <img src="./images/5172496.jpg" alt="Avatar">
         <div class="card-right-div">
-          <h4><b>Getting started with adobe digital editions</b></h4>
+          <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
             <p><span>Pages:</span> 190 / 313</p>
             <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a></p>
+            <p><span>Cover:</span>Image by <a
+                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            </p>
 
           </div>
           <div class="card-controls">
@@ -111,12 +169,14 @@
       <div class="card">
         <img src="./images/5172496.jpg" alt="Avatar">
         <div class="card-right-div">
-          <h4><b>Getting started with adobe digital editions</b></h4>
+          <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
             <p><span>Pages:</span> 190 / 313</p>
             <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a></p>
+            <p><span>Cover:</span>Image by <a
+                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            </p>
 
           </div>
           <div class="card-controls">
@@ -131,7 +191,7 @@
       <div class="card">
         <img src="./images/5172496.jpg" alt="Avatar">
         <div class="card-right-div">
-          <h4><b>Getting started with adobe digital editions</b></h4>
+          <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
             <p><span>Pages:</span> 190 / 313</p>
@@ -149,12 +209,14 @@
       <div class="card">
         <img src="./images/5172496.jpg" alt="Avatar">
         <div class="card-right-div">
-          <h4><b>Getting started with adobe digital editions</b></h4>
+          <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
             <p><span>Pages:</span> 190 / 313</p>
             <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a></p>
+            <p><span>Cover:</span>Image by <a
+                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            </p>
 
           </div>
           <div class="card-controls">
