@@ -69,9 +69,9 @@ export class Display {
 
 
 
-      // if(input_values_arr[i] == ) {
-
-      // }
+      if([i] == 3) { // if its Cover 
+        
+      }
       const p_text = document.createTextNode(input_values_arr[i]);
       p.appendChild(p_text);
       card_right_div_paras.appendChild(p);
