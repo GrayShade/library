@@ -33,12 +33,12 @@
               <input type="text" class="form_inputs" id="pages" name="pages" minlength="3" maxlength="79">
               <label for="read">Read: <span aria-label="required"></span></label>
               <input type="text" class="form_inputs" id="read" name="read" minlength="3" maxlength="79">
-              <label for="img_link_text">Image Link Text: <span aria-label="required"></span></label>
-              <input type="text" class="form_inputs" id="cover" name="cover" minlength="3" maxlength="79"
-              <label for="img_url">Image Url: <span aria-label="required"></span></label>
-              <input type="text" class="form_inputs" id="cover" name="cover" minlength="3" maxlength="79"
+              <label for="read">Cover URL: <span aria-label="required"></span></label>
+              <input type="text" class="form_inputs" id="cover-url" name="cover-url" minlength="3">
+              <label for="cover">Cover Credit: <span aria-label="required"></span></label>
+              <input type="text" class="form_inputs" id="cover" name="cover" minlength="3">
             </form>
-              <button id="form_button" form="form" type="submit">Create Account</button>
+            <button id="form_button" form="form" type="submit">Create Account</button>
           </div>
           <span class="close">&times;</span>
         </div>
@@ -53,18 +53,18 @@
       <h1>A Bookish Galaxy...</h1>
     </div>
     <div id="main-body">
-      <!-- Cards will be created via DOM...
-       Cards created via DOM will be like:
+      <!-- User created cards will be created via DOM...
+       Cards created via DOM will have html structure like:
        ...............................................................
       <div class="card">
-          <img src="./images/5172496.jpg" alt="Avatar">
+          <div class="card-left-div"></div>
           <div class="card-right-div">
             <h4><b>Getting started with adobe digital editions</b></h4>
             <div class="card-right-div-paras">
               <p><span>By: </span>Interior Designer</p>
-              <p><span>Pages:</span> 190 / 313</p>
-              <p><span>Read:</span> No</p>
-              <p><span>Cover:</span>Image by <a
+              <p><span>Pages: </span> 190 / 313</p>
+              <p><span>Read: </span> No</p>
+              <p><span>Cover: </span>Image by <a
                   href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
               </p>
             </div>
@@ -79,15 +79,18 @@
         </div>
        .............................................................. -->
       <div class="card">
-        <img src="./images/5172496.jpg" alt="Avatar">
+        <img src="./images/tim-alex-xG5VJW-7Bio-unsplash.jpg" alt="Avatar">
         <div class="card-right-div">
-          <h4>Getting started with adobe digital editions</h4>
+          <h4>The chronicles of Narnia</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
-            <p><span>Pages:</span> 190 / 313</p>
-            <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a
-                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            <p><span>Pages: </span> 190 / 313</p>
+            <p><span>Read: </span> No</p>
+            <p><span>Cover: </span>Photo by <a
+                href="https://unsplash.com/@thelondoner?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim
+                Alex</a> on <a
+                href="https://unsplash.com/photos/a-blue-book-with-a-picture-of-a-man-walking-through-the-woods-xG5VJW-7Bio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
             </p>
           </div>
           <div class="card-controls">
@@ -96,42 +99,25 @@
               <input type="checkbox" id="status">
               <label for="status">Read</label>
             </div>
+            <!-- <button class=".card-btn-remove">Remove</button>
+            <button class=".card-btn-read">Read</button> -->
           </div>
+
+
         </div>
       </div>
       <div class="card">
-        <img src="./images/5172496.jpg" alt="Avatar">
+        <img src="./images/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg" alt="Avatar">
         <div class="card-right-div">
           <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
-            <p><span>Pages:</span> 190 / 313</p>
-            <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a
-                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
-            </p>
-
-          </div>
-          <div class="card-controls">
-            <img class="card-controls-remove-icons" src="./icons/close-thick.svg" alt="close-thick">
-            <div class="card-controls-read-checks">
-              <input type="checkbox" id="status">
-              <label for="status">Read</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/5172496.jpg" alt="Avatar">
-        <div class="card-right-div">
-          <h4>Getting started with adobe digital editions</h4>
-          <div class="card-right-div-paras">
-            <p><span>By: </span>Interior Designer</p>
-            <p><span>Pages:</span> 190 / 313</p>
-            <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a
-                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            <p><span>Pages: </span> 190 / 313</p>
+            <p><span>Read: </span> No</p>
+            <p><span>Cover: </span>Photo by <a
+                href="https://unsplash.com/@madalyncox?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Madalyn
+                Cox</a> on <a
+                href="https://unsplash.com/photos/a-book-sitting-on-top-of-a-wooden-table-next-to-a-pool-O7ygzpAL4Mc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
             </p>
 
           </div>
@@ -144,16 +130,19 @@
           </div>
         </div>
       </div>
+
       <div class="card">
-        <img src="./images/5172496.jpg" alt="Avatar">
+        <img src="./images/jon-tyson-pFnvc1Cu6zI-unsplash.jpg" alt="Avatar">
         <div class="card-right-div">
           <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
-            <p><span>Pages:</span> 190 / 313</p>
-            <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a
-                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            <p><span>Pages: </span> 190 / 313</p>
+            <p><span>Read: </span> No</p>
+            <p><span>Cover: </span>Photo by <a
+                href="https://unsplash.com/@jontyson?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jon
+                Tyson</a> on <a
+                href="https://unsplash.com/photos/a-book-full-of-hope-book-pFnvc1Cu6zI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
             </p>
 
           </div>
@@ -167,15 +156,18 @@
         </div>
       </div>
       <div class="card">
-        <img src="./images/5172496.jpg" alt="Avatar">
+        <img src="./images/surja-sen-das-raj-ViMrMawjj7s-unsplash.jpg" alt="Avatar">
         <div class="card-right-div">
           <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
-            <p><span>Pages:</span> 190 / 313</p>
-            <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a
-                href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
+            <p><span>Pages: </span> 190 / 313</p>
+            <p><span>Read: </span> No</p>
+            <p><span>Cover: </span>Photo by <a
+                href="https://unsplash.com/@surjasendas?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Surja
+                Sen Das Raj</a> on <a
+                href="https://unsplash.com/photos/a-copy-of-the-book-company-of-one-by-paul-jarviss-ViMrMawjj7s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
             </p>
 
           </div>
@@ -194,27 +186,9 @@
           <h4>Getting started with adobe digital editions</h4>
           <div class="card-right-div-paras">
             <p><span>By: </span>Interior Designer</p>
-            <p><span>Pages:</span> 190 / 313</p>
-            <p><span>Read:</span> No</p>
-          </div>
-          <div class="card-controls">
-            <img class="card-controls-remove-icons" src="./icons/close-thick.svg" alt="close-thick">
-            <div class="card-controls-read-checks">
-              <input type="checkbox" id="status">
-              <label for="status">Read</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="./images/5172496.jpg" alt="Avatar">
-        <div class="card-right-div">
-          <h4>Getting started with adobe digital editions</h4>
-          <div class="card-right-div-paras">
-            <p><span>By: </span>Interior Designer</p>
-            <p><span>Pages:</span> 190 / 313</p>
-            <p><span>Read:</span> No</p>
-            <p><span>Cover:</span>Image by <a
+            <p><span>Pages: </span> 190 / 313</p>
+            <p><span>Read: </span> No</p>
+            <p><span>Cover: </span> Image by <a
                 href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>
             </p>
 

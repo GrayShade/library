@@ -34,19 +34,35 @@ export class Display {
     card_div.setAttribute('class', 'card');
     document.getElementById("main-body").appendChild(card_div);
 
+    const card_left_div = this.createLeftDiv(card_div, input_values_arr);
+    const card_right_div = this.createRightDiv(card_div, input_values_arr);
+    const card_controls = this.createCardControls(card_right_div, input_values_arr)
 
+    
+  }
+
+  createLeftDiv(card_div, input_values_arr) {
+    const card_left_div = document.createElement('div');
+    card_left_div.setAttribute('class', 'card-left-div');
+    card_div.appendChild(card_left_div);
+    card_left_div.style.backgroundImage = `url(${input_values_arr[4]})`;
     // card_div_parentEle.appendChild(card_divEle);
-    const img = document.createElement('img');
-    img.setAttribute('src', './images/5172496.jpg');
-    img.setAttribute('alt', 'Avatar');
-    card_div.appendChild(img);
+    // const img = document.createElement('img');
+    // img.setAttribute('src', './images/5172496.jpg');
 
+    // img.setAttribute('src', input_values_arr[4]);
+    // img.setAttribute('alt', 'Avatar');
+    // card_left_div.appendChild(img);
+    return card_left_div;
+  }
+
+  createRightDiv(card_div, input_values_arr) {
     const card_right_div = document.createElement('div');
     card_right_div.setAttribute('class', 'card-right-div');
     card_div.appendChild(card_right_div);
 
     const h4 = document.createElement('h4');
-    const h4_innerText = document.createTextNode('Getting started with adobe digital editions');
+    const h4_innerText = document.createTextNode(input_values_arr[0]);
     h4.appendChild(h4_innerText);
     card_right_div.appendChild(h4);
 
@@ -54,29 +70,36 @@ export class Display {
     card_right_div_paras.setAttribute('class', 'card-right-div-paras');
     card_right_div.appendChild(card_right_div_paras);
 
-    const p_span_text_arr = ['By', 'Pages', 'Read', 'Cover'];
-    for (let i = 0; i <= 3; i++) {
+    const p_span_text_arr = ['Title', 'By', 'Pages', 'Read', 'Cover'];
+    for (let i = 0; i <= 5; i++) {
       const p = document.createElement('p');
 
-      const p_span = document.createElement('span');
-      const p_span_text = document.createTextNode(`${p_span_text_arr[i]}: `);
-      p_span.appendChild(p_span_text);
+      let p_value_text = '';
+      if (i == 4) {
+        continue;
+      } else
+        if (i == 5) {
+          console.log('here');
 
-      // adding span first in << p >>:
-      p.insertBefore(p_span, p.firstChild);
+          p.innerHTML = '<span>Cover: </span>' + input_values_arr[i];
+        } else {
+          const p_span = document.createElement('span');
+          const p_span_title_text = document.createTextNode(`${p_span_text_arr[i]}: `);
+          p_span.appendChild(p_span_title_text);
 
+          // adding span first in << p >>:
+          p.insertBefore(p_span, p.firstChild);
+          p_value_text = document.createTextNode(input_values_arr[i]);
+          p.appendChild(p_value_text);
+        }
 
-
-
-
-      if([i] == 3) { // if its Cover 
-        
-      }
-      const p_text = document.createTextNode(input_values_arr[i]);
-      p.appendChild(p_text);
       card_right_div_paras.appendChild(p);
+      
     }
+    return card_right_div;
+  }
 
+  createCardControls(card_right_div, input_values_arr) {
     const card_controls = document.createElement('div');
     card_controls.setAttribute('class', 'card-controls');
     card_right_div.appendChild(card_controls);
@@ -101,6 +124,8 @@ export class Display {
     const card_controls_read_checks_label_text = document.createTextNode('Read');
     card_controls_read_checks_label.appendChild(card_controls_read_checks_label_text);
     card_controls_read_checks.appendChild(card_controls_read_checks_label);
+
+    return card_controls;
   }
 
   resetModal() {
