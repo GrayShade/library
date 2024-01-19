@@ -209,8 +209,8 @@ body {
 }
 
 .card img {
-  max-width: 40%;
-  min-width: 40%;
+  /* max-width: 40%;
+  min-width: 40%; */
 }
 
 
@@ -218,14 +218,20 @@ body {
 .card .card-left-div {
   max-width: 40%;
   min-width: 40%;
-  /* background-image: url('./../images/5172496.jpg'); */
-  background-size: cover;
+  display: flex;
+  /* background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center center; */
+}
+
+.card-left-div img {
+  max-width: 100%;
+  min-width: 100%;
+  height: auto;
 }
 
 .card-right-div {
-  border-radius: 5px;
+  border-radius: 0px 5px 5px 0px;
   font-size: 0.8em;
   display: flex;
   flex-direction: column;

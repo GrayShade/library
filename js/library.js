@@ -26,22 +26,37 @@ class Main {
     // cards_list.forEach((card, idx) => {
     //   const cover_url = card.querySelector('img');
     // });
-    let default_books = [{'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg`, 'cover': `Photo by <a
+    let default_books = [
+      {
+        'title': 'The chronicles of Narnia', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/tim-alex-xG5VJW-7Bio-unsplash.jpg`, 'cover': `Photo by <a
+    href="https://unsplash.com/@thelondoner?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim
+    Alex</a> on <a
+    href="https://unsplash.com/photos/a-blue-book-with-a-picture-of-a-man-walking-through-the-woods-xG5VJW-7Bio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`},
+      {
+        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg`, 'cover': `Photo by <a
     href="https://unsplash.com/@madalyncox?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Madalyn
     Cox</a> on <a
-    href="https://unsplash.com/photos/a-book-sitting-on-top-of-a-wooden-table-next-to-a-pool-O7ygzpAL4Mc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`}
-    // ,
-    // {'title': '', 'author': '', 'pages': '', 'read': '', 'cover_url': '', 'cover': ''},
-    // {'title': '', 'author': '', 'pages': '', 'read': '', 'cover_url': '', 'cover': ''},
-    // {'title': '', 'author': '', 'pages': '', 'read': '', 'cover_url': '', 'cover': ''},
-    // {'title': '', 'author': '', 'pages': '', 'read': '', 'cover_url': '', 'cover': ''}
-  ]
+    href="https://unsplash.com/photos/a-book-sitting-on-top-of-a-wooden-table-next-to-a-pool-O7ygzpAL4Mc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`},
+      {
+        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/jon-tyson-pFnvc1Cu6zI-unsplash.jpg`, 'cover': `Photo by <a
+      href="https://unsplash.com/@jontyson?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jon
+      Tyson</a> on <a
+      href="https://unsplash.com/photos/a-book-full-of-hope-book-pFnvc1Cu6zI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>` },
+      {
+        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/surja-sen-das-raj-ViMrMawjj7s-unsplash.jpg`, 'cover': `Photo by <a
+      href="https://unsplash.com/@surjasendas?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Surja
+      Sen Das Raj</a> on <a
+      href="https://unsplash.com/photos/a-copy-of-the-book-company-of-one-by-paul-jarviss-ViMrMawjj7s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>` },
+      {
+        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/5172496.jpg`, 'cover': `Image by <a
+      href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>` }
+    ]
 
-    for(let book_obj of default_books) {
+    for (let book_obj of default_books) {
       let book_arr = Object.values(book_obj)
       this.addBook(book_arr);
-    } 
-    
+    }
+
   }
 
   addBook(book_arr) {
@@ -50,13 +65,13 @@ class Main {
     this.bookObj.addBook(book_arr);
     // this.bookObj = new Book();
     // console.log(this.bookObj.myLibrary);
-    
+
 
   }
 
   displayBooks(myLibrary) {
-    
-    for(let book_obj of myLibrary) {
+
+    for (let book_obj of myLibrary) {
       let book_arr = Object.values(book_obj);
       this.addCard(book_arr);
     }

@@ -45,14 +45,14 @@ export class Display {
     const card_left_div = document.createElement('div');
     card_left_div.setAttribute('class', 'card-left-div');
     card_div.appendChild(card_left_div);
-    card_left_div.style.backgroundImage = `url(${input_values_arr[4]})`;
+    // card_left_div.style.backgroundImage = `url(${input_values_arr[4]})`;
     // card_div_parentEle.appendChild(card_divEle);
-    // const img = document.createElement('img');
-    // img.setAttribute('src', './images/5172496.jpg');
+    const img = document.createElement('img');
+    img.setAttribute('src', `${input_values_arr[4]}`);
 
-    // img.setAttribute('src', input_values_arr[4]);
-    // img.setAttribute('alt', 'Avatar');
-    // card_left_div.appendChild(img);
+    img.setAttribute('src', input_values_arr[4]);
+    img.setAttribute('alt', 'Avatar');
+    card_left_div.appendChild(img);
     return card_left_div;
   }
 
@@ -70,12 +70,14 @@ export class Display {
     card_right_div_paras.setAttribute('class', 'card-right-div-paras');
     card_right_div.appendChild(card_right_div_paras);
 
-    const p_span_text_arr = ['Title', 'By', 'Pages', 'Read', 'Cover'];
+    const p_span_text_arr = ['title', 'By', 'Pages', 'Read', 'Cover'];
     for (let i = 0; i <= 5; i++) {
       const p = document.createElement('p');
 
       let p_value_text = '';
-      if (i == 4) {
+
+      if (i == 4 || i == 0) {
+        // skip if its image link
         continue;
       } else
         if (i == 5) {
@@ -89,6 +91,7 @@ export class Display {
 
           // adding span first in << p >>:
           p.insertBefore(p_span, p.firstChild);
+          // 
           p_value_text = document.createTextNode(input_values_arr[i]);
           p.appendChild(p_value_text);
         }
