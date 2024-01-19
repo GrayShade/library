@@ -10,14 +10,14 @@ export class Book {
 
   myLibrary = [];
 
-  addBook(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.cover_url = cover_url;
-    this.cover = cover;
-    this.myLibrary.push({title, author, pages, read, cover_url, cover});
+  addBook(book_arr) {
+    this.title = book_arr[0];
+    this.author = book_arr[1];
+    this.pages = book_arr[2];
+    this.read = book_arr[3];
+    this.cover_url = book_arr[4];
+    this.cover = book_arr[5];
+    this.myLibrary.push({ 'title': this.title, 'author': this.author, 'pages': this.pages, 'read': this.read, 'cover_url': this.cover_url, 'cover': this.cover });
 
     // const fs = require('node:fs');
     // const content = 'Some content!';
@@ -25,9 +25,9 @@ export class Book {
     // if (err) {
     //   console.error(err);
     // }
-  // file written successfully
-// });
-  } 
+    // file written successfully
+    // });
+  }
 
   deleteBook() {
 
