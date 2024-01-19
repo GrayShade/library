@@ -90,7 +90,7 @@ body {
 }
 
 #leftbar-categories-items p {
-  padding: 3px 0px;
+  /* padding: 3px 0px; */
 }
 
 #leftbar-categories-items p:hover {

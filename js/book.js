@@ -4,6 +4,8 @@ export class Book {
     this.author;
     this.pages;
     this.read;
+    this.cover_url;
+    this.cover;
   }
 
   myLibrary = [];
@@ -13,7 +15,9 @@ export class Book {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.myLibrary.push({title, author, pages, read});
+    this.cover_url = cover_url;
+    this.cover = cover;
+    this.myLibrary.push({title, author, pages, read, cover_url, cover});
 
     // const fs = require('node:fs');
     // const content = 'Some content!';

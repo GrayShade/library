@@ -15,9 +15,17 @@ class Main {
       this.bookObj = new Book();
       this.displayObj = new Display();
     }).call(this); // using call to manually bind << this >>
+    this.addDefaultBooks();
     this.displayBooks(this.bookObj.myLibrary);
     this.setModal();
     this.processModal();
+  }
+
+  addDefaultBooks() {
+    const cards_list = document.querySelectorAll('.card');
+    cards_list.forEach((card, idx) => {
+      const cover_url = card.querySelector('img');
+    });
   }
 
   setModal() {
