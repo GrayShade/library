@@ -10,7 +10,7 @@ export class Book {
 
   myLibrary = [];
 
-  addBook(book_arr) {
+  addBookToLibrary(book_arr) {
     this.title = book_arr[0];
     this.author = book_arr[1];
     this.pages = book_arr[2];

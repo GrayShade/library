@@ -16,9 +16,9 @@ class Main {
       this.displayObj = new Display();
     }).call(this); // using call to manually bind << this >>
     this.addDefaultBooks();
-    this.displayBooks(this.bookObj.myLibrary);
+    this.displayLibraryBooks(this.bookObj.myLibrary);
     this.setModal();
-    this.processModal();
+    // this.processModal();
   }
 
   addDefaultBooks() {
@@ -28,85 +28,89 @@ class Main {
     // });
     let default_books = [
       {
-        'title': 'The chronicles of Narnia', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/tim-alex-xG5VJW-7Bio-unsplash.jpg`, 'cover': `Photo by <a
+        'title': 'The chronicles of Narnia', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/tim-alex-xG5VJW-7Bio-unsplash.jpg`, 'cover': `Photo by <a
     href="https://unsplash.com/@thelondoner?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim
     Alex</a> on <a
     href="https://unsplash.com/photos/a-blue-book-with-a-picture-of-a-man-walking-through-the-woods-xG5VJW-7Bio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`},
       {
-        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg`, 'cover': `Photo by <a
+        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg`, 'cover': `Photo by <a
     href="https://unsplash.com/@madalyncox?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Madalyn
     Cox</a> on <a
     href="https://unsplash.com/photos/a-book-sitting-on-top-of-a-wooden-table-next-to-a-pool-O7ygzpAL4Mc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`},
       {
-        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/jon-tyson-pFnvc1Cu6zI-unsplash.jpg`, 'cover': `Photo by <a
+        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/jon-tyson-pFnvc1Cu6zI-unsplash.jpg`, 'cover': `Photo by <a
       href="https://unsplash.com/@jontyson?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jon
       Tyson</a> on <a
       href="https://unsplash.com/photos/a-book-full-of-hope-book-pFnvc1Cu6zI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>` },
       {
-        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/surja-sen-das-raj-ViMrMawjj7s-unsplash.jpg`, 'cover': `Photo by <a
+        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/surja-sen-das-raj-ViMrMawjj7s-unsplash.jpg`, 'cover': `Photo by <a
       href="https://unsplash.com/@surjasendas?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Surja
       Sen Das Raj</a> on <a
       href="https://unsplash.com/photos/a-copy-of-the-book-company-of-one-by-paul-jarviss-ViMrMawjj7s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>` },
       {
-        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/5172496.jpg`, 'cover': `Image by <a
+        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/5172496.jpg`, 'cover': `Image by <a
       href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>` }
     ]
 
     for (let book_obj of default_books) {
       let book_arr = Object.values(book_obj)
-      this.addBook(book_arr);
+      this.addBookToLibrary(book_arr);
     }
 
   }
 
-  addBook(book_arr) {
+  addBookToLibrary(book_arr) {
     // let newBookObj = new Book();
-    // this.bookObj.addBook('sample', 'author', 190, 'yes');
-    this.bookObj.addBook(book_arr);
+    // this.bookObj.addBookToLibrary('sample', 'author', 190, 'yes');
+    this.bookObj.addBookToLibrary(book_arr);
     // this.bookObj = new Book();
     // console.log(this.bookObj.myLibrary);
 
 
   }
 
-  displayBooks(myLibrary) {
+  displayLibraryBooks(myLibrary) {
 
-    for (let book_obj of myLibrary) {
+    myLibrary.forEach((book_obj, idx) => {
       let book_arr = Object.values(book_obj);
-      this.addCard(book_arr);
-    }
-    this.displayObj.displayBooks(myLibrary);
+      this.addCard(book_arr, idx + 1);
+    });
+    // this.displayObj.displayLibraryBooks(myLibrary);
+    const cardEle = document.querySelector('.card');
+    cardEle.addEventListener('mouseover', (e) => {
+      
+    });
   }
 
   setModal() {
     this.displayObj.setModal();
-  }
-
-  // when form is submitted:
-  processModal(form_data) {
-
     let form = document.getElementById('form');
     // remember that 'submit' event works only for form, not for buttons:
     form.addEventListener(('submit'), e => {
       console.log('submitted...');
-
-      let input_values_arr = [];
-      const req_inputs_arr = document.querySelectorAll('.form_inputs');
-      req_inputs_arr.forEach((ele, idx) => {
-        if (ele != '' || ele != null) {
-          input_values_arr.push(req_inputs_arr[idx].value);
-        } else
-          input_values_arr.push('Not specified');
-      });
-
-      this.addCard(input_values_arr);
-      this.resetModal();
+      this.processModal(e);
     });
+  }
+
+  processModal(e) {
+    let input_values_arr = [];
+    const req_inputs_arr = document.querySelectorAll('.form_inputs');
+    req_inputs_arr.forEach((ele, idx) => {
+      if (ele != '' || ele != null) {
+
+        input_values_arr.push(req_inputs_arr[idx].value);
+      } else
+        input_values_arr.push('Not specified');
+    });
+    this.addBookToLibrary(input_values_arr);
+    this.addCard(input_values_arr, this.bookObj.myLibrary.length);
+    this.resetModal();
+    // });
 
   }
 
-  addCard(input_values_arr) {
-    this.displayObj.addCard(input_values_arr);
+  addCard(input_values_arr, book_number) {
+    this.displayObj.addCard(input_values_arr, book_number);
   }
 
   resetModal() {
@@ -122,9 +126,10 @@ class Main {
 const main = new Main();
 main.start();
 // image id attribute not showing up in DOM for some reason. So:
-const addButton = document.querySelector('img[alt=plus]');
-const bookAddListener = addButton.addEventListener('click', e => {
-  // main.showModal()
-  // main.addBook();
+// const addButton = document.querySelector('img[alt=plus]');
+// const bookAddListener = addButton.addEventListener('click', e => {
+//   // main.processModal()
+//   // main.showModal()
+//   // main.addBookToLibrary();
 
-});
+// });
