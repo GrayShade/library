@@ -33,7 +33,7 @@ export class Display {
 
     const card_div = document.createElement("div");
     card_div.setAttribute('class', 'card');
-    card_div.setAttribute('id', `card${book_number}`);
+    card_div.setAttribute('id', `card-${book_number}`);
   
     document.getElementById("main-body").appendChild(card_div);
 
@@ -112,12 +112,14 @@ export class Display {
 
     const card_cntrls_remove_icons = document.createElement('img');
     card_cntrls_remove_icons.setAttribute('class', 'card-controls-remove-icons');
+    card_cntrls_remove_icons.setAttribute('id', `card-controls-remove-icon-${book_number}`);
     card_cntrls_remove_icons.setAttribute('src', './icons/close-thick.svg');
     card_cntrls_remove_icons.setAttribute('alt', 'close-thick');
     card_cntrls.appendChild(card_cntrls_remove_icons);
 
     const card_cntrls_read_checks = document.createElement('div');
     card_cntrls_read_checks.setAttribute('class', 'card-controls-read-checks');
+    card_cntrls_read_checks.setAttribute('id', `card-controls-read-check-${book_number}`);
     card_cntrls.appendChild(card_cntrls_read_checks);
 
     const card_cntrls_read_chek_status = document.createElement('input');

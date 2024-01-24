@@ -76,10 +76,38 @@ class Main {
       this.addCard(book_arr, idx + 1);
     });
     // this.displayObj.displayLibraryBooks(myLibrary);
-    const cardEle = document.querySelector('.card');
-    cardEle.addEventListener('mouseover', (e) => {
-      
+    const cardsArray = document.querySelectorAll('.card');
+    cardsArray.forEach((cardEle, idx) => {
+      // cardEle.addEventListener('mouseenter', (e) => {
+      //   // const card = document.getElementById('card');
+      //   // console.log(cardEle.getAttribute('ID'));
+      //   const card_controls = cardEle.querySelector('.card-controls');
+      //   card_controls.childNodes.forEach((child, idx) => {
+      //     document.getElementById(child.getAttribute('ID')).style.display = 'auto';
+      //   }); 
+      // });
+      let events = ['mouseenter', 'mouseleave'];
+      function getEventType(event) {
+        const log = document.getElementById("log");
+        log.innerText = `${event.type}\n${log.innerText}`;
+      }
+      events.forEach(mouse_event => cardEle.addEventListener(mouse_event, (e) => {
+        const card_controls = cardEle.querySelector('.card-controls');
+        card_controls.childNodes.forEach((child, idx, mouse_event) => {
+          if (e.type === 'mouseenter') {
+            document.getElementById(child.getAttribute('ID')).style.display = 'flex';
+          } else
+            if (e.type === 'mouseleave') {
+              document.getElementById(child.getAttribute('ID')).style.display = 'none';
+            }
+        });
+      }));
     });
+
+
+
+
+
   }
 
   setModal() {
