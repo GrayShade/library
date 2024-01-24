@@ -33,7 +33,7 @@ class Main {
     Alex</a> on <a
     href="https://unsplash.com/photos/a-blue-book-with-a-picture-of-a-man-walking-through-the-woods-xG5VJW-7Bio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`},
       {
-        'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg`, 'cover': `Photo by <a
+        'title': 'Getting started with adobe digital editions adobe digital editions', 'author': 'Interior Designer Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg`, 'cover': `Photo by <a
     href="https://unsplash.com/@madalyncox?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Madalyn
     Cox</a> on <a
     href="https://unsplash.com/photos/a-book-sitting-on-top-of-a-wooden-table-next-to-a-pool-O7ygzpAL4Mc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`},
@@ -73,41 +73,39 @@ class Main {
 
     myLibrary.forEach((book_obj, idx) => {
       let book_arr = Object.values(book_obj);
-      this.addCard(book_arr, idx + 1);
-    });
-    // this.displayObj.displayLibraryBooks(myLibrary);
-    const cardsArray = document.querySelectorAll('.card');
-    cardsArray.forEach((cardEle, idx) => {
-      // cardEle.addEventListener('mouseenter', (e) => {
-      //   // const card = document.getElementById('card');
-      //   // console.log(cardEle.getAttribute('ID'));
-      //   const card_controls = cardEle.querySelector('.card-controls');
-      //   card_controls.childNodes.forEach((child, idx) => {
-      //     document.getElementById(child.getAttribute('ID')).style.display = 'auto';
-      //   }); 
-      // });
-      let events = ['mouseenter', 'mouseleave'];
-      function getEventType(event) {
-        const log = document.getElementById("log");
-        log.innerText = `${event.type}\n${log.innerText}`;
-      }
-      events.forEach(mouse_event => cardEle.addEventListener(mouse_event, (e) => {
-        const card_controls = cardEle.querySelector('.card-controls');
-        card_controls.childNodes.forEach((child, idx, mouse_event) => {
-          if (e.type === 'mouseenter') {
-            document.getElementById(child.getAttribute('ID')).style.display = 'flex';
-          } else
-            if (e.type === 'mouseleave') {
-              document.getElementById(child.getAttribute('ID')).style.display = 'none';
-            }
-        });
-      }));
+      const book_number = idx + 1;
+      this.addCard(book_arr, book_number);
+
+      const cardEle = document.getElementById(`card-${book_number}`);
+      this.showHideCardControls(cardEle);
     });
 
+    // const cardsArray = document.querySelectorAll('.card');
+    // cardsArray.forEach((cardEle, idx) => {
 
+    //   this.showHideCardControls(cardEle);
 
+    // });
 
+  }
 
+  showHideCardControls(cardEle) {
+    let events = ['mouseenter', 'mouseleave'];
+    function getEventType(event) {
+      const log = document.getElementById("log");
+      log.innerText = `${event.type}\n${log.innerText}`;
+    }
+    events.forEach(mouse_event => cardEle.addEventListener(mouse_event, (e) => {
+      const card_controls = cardEle.querySelector('.card-controls');
+      card_controls.childNodes.forEach((child, idx, mouse_event) => {
+        if (e.type === 'mouseenter') {
+          document.getElementById(child.getAttribute('ID')).style.visibility = 'visible';
+        } else
+          if (e.type === 'mouseleave') {
+            document.getElementById(child.getAttribute('ID')).style.visibility = 'hidden';
+          }
+      });
+    }));
   }
 
   setModal() {
@@ -139,6 +137,8 @@ class Main {
 
   addCard(input_values_arr, book_number) {
     this.displayObj.addCard(input_values_arr, book_number);
+    const cardEle = document.getElementById(`card-${book_number}`)
+    this.showHideCardControls(cardEle);
   }
 
   resetModal() {
