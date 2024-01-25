@@ -6,7 +6,6 @@ class Main {
   constructor() {
     this.bookObj;
     this.display;
-    // this.shelfObj = new Shelf();
 
   }
 
@@ -22,10 +21,7 @@ class Main {
   }
 
   addDefaultBooks() {
-    // const cards_list = document.querySelectorAll('.card');
-    // cards_list.forEach((card, idx) => {
-    //   const cover_url = card.querySelector('img');
-    // });
+
     let default_books = [
       {
         'title': 'The chronicles of Narnia', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/tim-alex-xG5VJW-7Bio-unsplash.jpg`, 'cover': `Photo by <a
@@ -60,13 +56,7 @@ class Main {
   }
 
   addBookToLibrary(book_arr) {
-    // let newBookObj = new Book();
-    // this.bookObj.addBookToLibrary('sample', 'author', 190, 'yes');
     this.bookObj.addBookToLibrary(book_arr);
-    // this.bookObj = new Book();
-    // console.log(this.bookObj.myLibrary);
-
-
   }
 
   displayLibraryBooks(myLibrary) {
@@ -76,37 +66,11 @@ class Main {
       const book_number = idx + 1;
       this.addCard(book_arr, book_number);
 
-      const cardEle = document.getElementById(`card-${book_number}`);
-      this.showHideCardControls(cardEle);
     });
 
-    // const cardsArray = document.querySelectorAll('.card');
-    // cardsArray.forEach((cardEle, idx) => {
-
-    //   this.showHideCardControls(cardEle);
-
-    // });
-
   }
 
-  showHideCardControls(cardEle) {
-    let events = ['mouseenter', 'mouseleave'];
-    function getEventType(event) {
-      const log = document.getElementById("log");
-      log.innerText = `${event.type}\n${log.innerText}`;
-    }
-    events.forEach(mouse_event => cardEle.addEventListener(mouse_event, (e) => {
-      const card_controls = cardEle.querySelector('.card-controls');
-      card_controls.childNodes.forEach((child, idx, mouse_event) => {
-        if (e.type === 'mouseenter') {
-          document.getElementById(child.getAttribute('ID')).style.visibility = 'visible';
-        } else
-          if (e.type === 'mouseleave') {
-            document.getElementById(child.getAttribute('ID')).style.visibility = 'hidden';
-          }
-      });
-    }));
-  }
+
 
   setModal() {
     this.displayObj.setModal();
@@ -123,7 +87,6 @@ class Main {
     const req_inputs_arr = document.querySelectorAll('.form_inputs');
     req_inputs_arr.forEach((ele, idx) => {
       if (ele != '' || ele != null) {
-
         input_values_arr.push(req_inputs_arr[idx].value);
       } else
         input_values_arr.push('Not specified');
@@ -131,33 +94,53 @@ class Main {
     this.addBookToLibrary(input_values_arr);
     this.addCard(input_values_arr, this.bookObj.myLibrary.length);
     this.resetModal();
-    // });
 
   }
 
   addCard(input_values_arr, book_number) {
     this.displayObj.addCard(input_values_arr, book_number);
+
     const cardEle = document.getElementById(`card-${book_number}`)
-    this.showHideCardControls(cardEle);
+    this.displayObj.showHideCardControls(cardEle);
+    this.processCardControls(cardEle, book_number);
+  }
+
+
+
+  processCardControls(cardEle, book_num) {
+    // cardEle.addEventListener('click', e => {
+      const remove_icon = document.getElementById(`card-controls-remove-icon-${book_num}`);
+      const read_check = document.getElementById(`card${book_num}_status`);
+      const controls_arr = [remove_icon, read_check];
+      for (let ele of controls_arr) {
+        ele.addEventListener('click', e => {
+          if (e.target.id == `card-controls-remove-icon-${book_num}`) {
+            // alert('here');
+            cardEle.remove();
+          } else
+            if (e.target.id == `card${book_num}_status`) {
+              // alert('here2');
+              const read_with_no = '<span class="read-span">Read: </span>No';
+              const read_with_yes = '<span class="read-span">Read: </span>Yes';
+
+              const para_id = document.getElementById(`Read${book_num}`);
+              if (para_id.innerHTML == read_with_no || para_id.innerHTML == '<span>Read: </span>') {
+                para_id.innerHTML = read_with_yes
+              }
+              else
+              para_id.innerHTML = read_with_no
+              // para_id.appendChild(document.createTextNode(`sss`));
+            }
+        });
+      }
+    // })
   }
 
   resetModal() {
     this.displayObj.resetModal();
   }
 
-
-
-
-
 }
 
 const main = new Main();
 main.start();
-// image id attribute not showing up in DOM for some reason. So:
-// const addButton = document.querySelector('img[alt=plus]');
-// const bookAddListener = addButton.addEventListener('click', e => {
-//   // main.processModal()
-//   // main.showModal()
-//   // main.addBookToLibrary();
-
-// });

@@ -29,17 +29,17 @@ export class Display {
     });
   }
 
-  addCard(input_values_arr, book_number) {
+  addCard(input_values_arr, book_num) {
 
     const card_div = document.createElement("div");
     card_div.setAttribute('class', 'card');
-    card_div.setAttribute('id', `card-${book_number}`);
+    card_div.setAttribute('id', `card-${book_num}`);
   
     document.getElementById("main-body").appendChild(card_div);
 
     const card_left_div = this.createLeftDiv(card_div, input_values_arr);
-    const card_right_div = this.createRightDiv(card_div, input_values_arr);
-    const card_cntrls = this.createCardControls(card_right_div, input_values_arr, book_number)
+    const card_right_div = this.createRightDiv(card_div, input_values_arr, book_num);
+    const card_cntrls = this.createCardControls(card_right_div, input_values_arr, book_num)
 
 
   }
@@ -59,7 +59,7 @@ export class Display {
     return card_left_div;
   }
 
-  createRightDiv(card_div, input_values_arr) {
+  createRightDiv(card_div, input_values_arr, book_num) {
     const card_right_div = document.createElement('div');
     card_right_div.setAttribute('class', 'card-right-div');
     card_div.appendChild(card_right_div);
@@ -73,9 +73,10 @@ export class Display {
     card_right_div_paras.setAttribute('class', 'card-right-div-paras');
     card_right_div.appendChild(card_right_div_paras);
 
-    const p_span_txt_arr = ['title', 'By', 'Pages', 'Read', 'Cover'];
+    const p_span_txt_arr = ['title', 'By', 'Page', 'Read', 'Cred'];
     for (let i = 0; i <= 5; i++) {
       const p = document.createElement('p');
+      p.setAttribute('id', `${p_span_txt_arr[i]}${book_num}`);
 
       let p_value_txt = '';
 
@@ -84,11 +85,13 @@ export class Display {
         continue;
       } else
         if (i == 5) {
-          console.log('here');
 
-          p.innerHTML = '<span>Cover: </span>' + input_values_arr[i];
+          // p.innerHTML = `<span id="cred-span${book_num}">Cred: </span>` + input_values_arr[i];
+          p.innerHTML = `<span class="cred-span">Cred: </span>` + input_values_arr[i];
         } else {
           const p_span = document.createElement('span');
+          // p_span.setAttribute('id', `${p_span_txt_arr[i].toLowerCase()}-span${book_num}`);
+          p_span.setAttribute('class', `${p_span_txt_arr[i].toLowerCase()}-span`);
           const p_span_title_txt = document.createTextNode(`${p_span_txt_arr[i]}: `);
           p_span.appendChild(p_span_title_txt);
 
@@ -105,35 +108,50 @@ export class Display {
     return card_right_div;
   }
 
-  createCardControls(card_right_div, input_values_arr, book_number) {
+  createCardControls(card_right_div, input_values_arr, book_num) {
     const card_cntrls = document.createElement('div');
     card_cntrls.setAttribute('class', 'card-controls');
     card_right_div.appendChild(card_cntrls);
 
     const card_cntrls_remove_icons = document.createElement('img');
     card_cntrls_remove_icons.setAttribute('class', 'card-controls-remove-icons');
-    card_cntrls_remove_icons.setAttribute('id', `card-controls-remove-icon-${book_number}`);
+    card_cntrls_remove_icons.setAttribute('id', `card-controls-remove-icon-${book_num}`);
     card_cntrls_remove_icons.setAttribute('src', './icons/close-thick.svg');
     card_cntrls_remove_icons.setAttribute('alt', 'close-thick');
     card_cntrls.appendChild(card_cntrls_remove_icons);
 
     const card_cntrls_read_checks = document.createElement('div');
     card_cntrls_read_checks.setAttribute('class', 'card-controls-read-checks');
-    card_cntrls_read_checks.setAttribute('id', `card-controls-read-check-${book_number}`);
+    card_cntrls_read_checks.setAttribute('id', `card-controls-read-check-${book_num}`);
     card_cntrls.appendChild(card_cntrls_read_checks);
 
     const card_cntrls_read_chek_status = document.createElement('input');
     card_cntrls_read_chek_status.setAttribute('type', 'checkbox');
-    card_cntrls_read_chek_status.setAttribute('id', `card${book_number}_status`);
+    card_cntrls_read_chek_status.setAttribute('id', `card${book_num}_status`);
     card_cntrls_read_checks.appendChild(card_cntrls_read_chek_status);
 
     const card_cntrls_read_cheks_labl = document.createElement('label');
-    card_cntrls_read_cheks_labl.setAttribute('for', 'status');
+    card_cntrls_read_cheks_labl.setAttribute('for', `card${book_num}_status`);
     const card_cntrls_read_cheks_labl_txt = document.createTextNode('Read');
     card_cntrls_read_cheks_labl.appendChild(card_cntrls_read_cheks_labl_txt);
     card_cntrls_read_checks.appendChild(card_cntrls_read_cheks_labl);
 
     return card_cntrls;
+  }
+
+  showHideCardControls(cardEle) {
+    let events = ['mouseenter', 'mouseleave'];
+    events.forEach(mouse_event => cardEle.addEventListener(mouse_event, (e) => {
+      const card_controls = cardEle.querySelector('.card-controls');
+      card_controls.childNodes.forEach((child, idx) => {
+        if (e.type === 'mouseenter') {
+          document.getElementById(child.getAttribute('ID')).style.visibility = 'visible';
+        } else
+          if (e.type === 'mouseleave') {
+            document.getElementById(child.getAttribute('ID')).style.visibility = 'hidden';
+          }
+      });
+    }));
   }
 
   resetModal() {

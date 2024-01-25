@@ -252,6 +252,17 @@ body {
   font-weight: bold;
 }
 
+
+
+.by-span {
+  padding-right: 1.1rem;
+}
+.page-span, .read-span {
+  padding-right: 0.1rem;
+}
+
+
+
 .card-right-div-paras a {
   color: lightseagreen;
 }
@@ -280,6 +291,8 @@ body {
 .card-controls-remove-icons, .card-controls-read-checks {
   visibility: hidden;
 }
+
+
 
 /* .card-controls button {
   background: greenyellow;
