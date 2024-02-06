@@ -88,9 +88,9 @@ export class Display {
 
           // p.innerHTML = `<span id="cred-span${book_num}">Cred: </span>` + singleBook_arr[i];
           p.innerHTML = `<span class="cred-span">Cred: </span>` + singleBook_arr[i + 1];
-          p.setAttribute('id', `${p_span_txt_arr[4]}${book_num}`);
+          p.setAttribute('id', `${p_span_txt_arr[4]}-${book_num}`);
         } else {
-          p.setAttribute('id', `${p_span_txt_arr[i]}${book_num}`);
+          p.setAttribute('id', `${p_span_txt_arr[i]}-${book_num}`);
           const p_span = document.createElement('span');
           // p_span.setAttribute('id', `${p_span_txt_arr[i].toLowerCase()}-span${book_num}`);
           p_span.setAttribute('class', `${p_span_txt_arr[i].toLowerCase()}-span`);

@@ -84,7 +84,16 @@ class Main {
 
   processModal(e) {
     let input_values_arr = [];
-    let book_id = this.bookObj.myLibrary.length + 1;
+    // let book_id = this.bookObj.myLibrary.length + 1;
+    let maxBookID = this.bookObj.myLibrary[0]['id'];
+    for(let bookObj of this.bookObj.myLibrary) {
+      if(maxBookID < bookObj['id']) {
+        maxBookID = bookObj['id'];
+      }
+    }
+
+    let book_id = maxBookID + 1;
+    // console.log(lib);
     input_values_arr.push(book_id);
     const req_inputs_arr = document.querySelectorAll('.form_inputs');
     req_inputs_arr.forEach((ele, idx) => {
