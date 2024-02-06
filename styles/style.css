@@ -184,6 +184,7 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
 /* modal related code ending here... */
 
 .card {
@@ -252,13 +253,17 @@ body {
   font-weight: bold;
 }
 
-
-
-.by-span {
+.card-right-div-paras .by-span {
   padding-right: 1.1rem;
 }
-.page-span, .read-span {
+
+.card-right-div-paras .page-span,
+.card-right-div-paras .read-span {
   padding-right: 0.1rem;
+}
+
+.cred_span {
+  padding-right: 0.5rem;
 }
 
 
@@ -288,7 +293,8 @@ body {
   gap: 7px;
 }
 
-.card-controls-remove-icons, .card-controls-read-checks {
+.card-controls-remove-icons,
+.card-controls-read-checks {
   visibility: hidden;
 }
 

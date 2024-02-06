@@ -1,5 +1,6 @@
 export class Book {
   constructor() {
+    this.id;
     this.title;
     this.author;
     this.pages;
@@ -11,13 +12,20 @@ export class Book {
   myLibrary = [];
 
   addBookToLibrary(book_arr) {
-    this.title = book_arr[0];
-    this.author = book_arr[1];
-    this.pages = book_arr[2];
-    this.read = book_arr[3];
-    this.cover_url = book_arr[4];
-    this.cover = book_arr[5];
-    this.myLibrary.push({ 'title': this.title, 'author': this.author, 'pages': this.pages, 'read': this.read, 'cover_url': this.cover_url, 'cover': this.cover });
+    this.id = book_arr[0];
+    this.title = book_arr[1];
+    this.author = book_arr[2];
+    this.pages = book_arr[3];
+    this.read = book_arr[4];
+    this.cover_url = book_arr[5];
+    this.cover = book_arr[6];
+    if (this.myLibrary.push({
+      'id': this.id, 'title': this.title, 'author': this.author,
+      'pages': this.pages, 'read': this.read, 'cover_url': this.cover_url, 'cover': this.cover
+    })) {
+      return true;
+    }
+    return false;
 
     // const fs = require('node:fs');
     // const content = 'Some content!';
@@ -29,8 +37,12 @@ export class Book {
     // });
   }
 
-  deleteBook() {
-
+  removeBookFromLibrary(book_id) {
+    // console.log(`books before: removal: `);
+    // console.log(this.myLibrary);
+    this.myLibrary.splice(book_id, 1);
+    // console.log(`books after removal:`);
+    // console.log(this.myLibrary);
   }
 
   changeReadStatus() {

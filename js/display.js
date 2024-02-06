@@ -29,7 +29,7 @@ export class Display {
     });
   }
 
-  addCard(input_values_arr, book_num) {
+  addCard(singleBook_arr, book_num) {
 
     const card_div = document.createElement("div");
     card_div.setAttribute('class', 'card');
@@ -37,35 +37,35 @@ export class Display {
   
     document.getElementById("main-body").appendChild(card_div);
 
-    const card_left_div = this.createLeftDiv(card_div, input_values_arr);
-    const card_right_div = this.createRightDiv(card_div, input_values_arr, book_num);
-    const card_cntrls = this.createCardControls(card_right_div, input_values_arr, book_num)
+    const card_left_div = this.createLeftDiv(card_div, singleBook_arr);
+    const card_right_div = this.createRightDiv(card_div, singleBook_arr, book_num);
+    const card_cntrls = this.createCardControls(card_right_div, singleBook_arr, book_num)
 
 
   }
 
-  createLeftDiv(card_div, input_values_arr) {
+  createLeftDiv(card_div, singleBook_arr) {
     const card_left_div = document.createElement('div');
     card_left_div.setAttribute('class', 'card-left-div');
     card_div.appendChild(card_left_div);
-    // card_left_div.style.backgroundImage = `url(${input_values_arr[4]})`;
+    // card_left_div.style.backgroundImage = `url(${singleBook_arr[4]})`;
     // card_div_parentEle.appendChild(card_divEle);
     const img = document.createElement('img');
-    img.setAttribute('src', `${input_values_arr[4]}`);
+    img.setAttribute('src', `${singleBook_arr[5]}`);
 
-    img.setAttribute('src', input_values_arr[4]);
+    img.setAttribute('src', singleBook_arr[5]);
     img.setAttribute('alt', 'Avatar');
     card_left_div.appendChild(img);
     return card_left_div;
   }
 
-  createRightDiv(card_div, input_values_arr, book_num) {
+  createRightDiv(card_div, singleBook_arr, book_num) {
     const card_right_div = document.createElement('div');
     card_right_div.setAttribute('class', 'card-right-div');
     card_div.appendChild(card_right_div);
 
     const h4 = document.createElement('h4');
-    const h4_innerText = document.createTextNode(input_values_arr[0]);
+    const h4_innerText = document.createTextNode(singleBook_arr[1]);
     h4.appendChild(h4_innerText);
     card_right_div.appendChild(h4);
 
@@ -80,14 +80,14 @@ export class Display {
 
       let p_value_txt = '';
 
-      if (i == 4 || i == 0) {
+      if ((i == 4) || (i < 1)) {
         // skip if its image link
         continue;
       } else
         if (i == 5) {
 
-          // p.innerHTML = `<span id="cred-span${book_num}">Cred: </span>` + input_values_arr[i];
-          p.innerHTML = `<span class="cred-span">Cred: </span>` + input_values_arr[i];
+          // p.innerHTML = `<span id="cred-span${book_num}">Cred: </span>` + singleBook_arr[i];
+          p.innerHTML = `<span class="cred-span">Cred: </span>` + singleBook_arr[i + 1];
         } else {
           const p_span = document.createElement('span');
           // p_span.setAttribute('id', `${p_span_txt_arr[i].toLowerCase()}-span${book_num}`);
@@ -98,7 +98,7 @@ export class Display {
           // adding span first in << p >>:
           p.insertBefore(p_span, p.firstChild);
           // 
-          p_value_txt = document.createTextNode(input_values_arr[i]);
+          p_value_txt = document.createTextNode(singleBook_arr[i + 1]);
           p.appendChild(p_value_txt);
         }
 
@@ -108,7 +108,7 @@ export class Display {
     return card_right_div;
   }
 
-  createCardControls(card_right_div, input_values_arr, book_num) {
+  createCardControls(card_right_div, singleBook_arr, book_num) {
     const card_cntrls = document.createElement('div');
     card_cntrls.setAttribute('class', 'card-controls');
     card_right_div.appendChild(card_cntrls);
