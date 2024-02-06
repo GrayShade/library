@@ -38,11 +38,11 @@ export class Book {
   }
 
   removeBookFromLibrary(book_id) {
-    // console.log(`books before: removal: `);
-    // console.log(this.myLibrary);
+    console.log(`books before: removal: `);
+    console.log(this.myLibrary);
     this.myLibrary.splice(book_id, 1);
-    // console.log(`books after removal:`);
-    // console.log(this.myLibrary);
+    console.log(`books after removal:`);
+    console.log(this.myLibrary);
   }
 
   changeReadStatus() {

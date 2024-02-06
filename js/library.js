@@ -122,7 +122,7 @@ class Main {
     for (let ele of controls_arr) {
       ele.addEventListener('click', e => {
         if (e.target.id == `card-controls-remove-icon-${book_id}`) {
-          cardEle.remove()
+          cardEle.remove();
             // As << book_id >> is basically index + 1, so taking index only:
             this.bookObj.removeBookFromLibrary(book_id)
           

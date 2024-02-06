@@ -64,10 +64,10 @@ export class Display {
     card_right_div.setAttribute('class', 'card-right-div');
     card_div.appendChild(card_right_div);
 
-    const h4 = document.createElement('h4');
-    const h4_innerText = document.createTextNode(singleBook_arr[1]);
-    h4.appendChild(h4_innerText);
-    card_right_div.appendChild(h4);
+    const card_right_div_title = document.createElement('h4');
+    const title_innerText = document.createTextNode(singleBook_arr[1]);
+    card_right_div_title.appendChild(title_innerText);
+    card_right_div.appendChild(card_right_div_title);
 
     const card_right_div_paras = document.createElement('div');
     card_right_div_paras.setAttribute('class', 'card-right-div-paras');
@@ -76,7 +76,7 @@ export class Display {
     const p_span_txt_arr = ['title', 'By', 'Page', 'Read', 'Cred'];
     for (let i = 0; i <= 5; i++) {
       const p = document.createElement('p');
-      p.setAttribute('id', `${p_span_txt_arr[i]}${book_num}`);
+      
 
       let p_value_txt = '';
 
@@ -88,7 +88,9 @@ export class Display {
 
           // p.innerHTML = `<span id="cred-span${book_num}">Cred: </span>` + singleBook_arr[i];
           p.innerHTML = `<span class="cred-span">Cred: </span>` + singleBook_arr[i + 1];
+          p.setAttribute('id', `${p_span_txt_arr[4]}${book_num}`);
         } else {
+          p.setAttribute('id', `${p_span_txt_arr[i]}${book_num}`);
           const p_span = document.createElement('span');
           // p_span.setAttribute('id', `${p_span_txt_arr[i].toLowerCase()}-span${book_num}`);
           p_span.setAttribute('class', `${p_span_txt_arr[i].toLowerCase()}-span`);
