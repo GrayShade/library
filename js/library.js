@@ -24,27 +24,27 @@ class Main {
 
     let default_books = [
       {
-        'id': 0, 'title': 'The chronicles of Narnia', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/tim-alex-xG5VJW-7Bio-unsplash.jpg`, 'cover': `Photo by <a
+        'id': 0, 'title': 'The chronicles of Narnia', 'author': 'Interior Designer', 'pages': '190 / 1000', 'read': 'No', 'cover_url': `./images/compressed/tim-alex-xG5VJW-7Bio-unsplash.jpg`, 'cover': `Photo by <a
     href="https://unsplash.com/@thelondoner?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim
     Alex</a> on <a
     href="https://unsplash.com/photos/a-blue-book-with-a-picture-of-a-man-walking-through-the-woods-xG5VJW-7Bio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`},
       {
-        'id': 1, 'title': 'Getting started with adobe digital editions adobe digital editions', 'author': 'Interior Designer Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg`, 'cover': `Photo by <a
+        'id': 1, 'title': 'Getting started with adobe digital editions adobe digital editions', 'author': 'Interior Designer Interior Designer', 'pages': '190 / 1000', 'read': 'No', 'cover_url': `./images/compressed/madalyn-cox-O7ygzpAL4Mc-unsplash.jpg`, 'cover': `Photo by <a
     href="https://unsplash.com/@madalyncox?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Madalyn
     Cox</a> on <a
     href="https://unsplash.com/photos/a-book-sitting-on-top-of-a-wooden-table-next-to-a-pool-O7ygzpAL4Mc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`},
       {
-        'id': 2, 'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/jon-tyson-pFnvc1Cu6zI-unsplash.jpg`, 'cover': `Photo by <a
+        'id': 2, 'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 1000', 'read': 'No', 'cover_url': `./images/compressed/jon-tyson-pFnvc1Cu6zI-unsplash.jpg`, 'cover': `Photo by <a
       href="https://unsplash.com/@jontyson?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jon
       Tyson</a> on <a
       href="https://unsplash.com/photos/a-book-full-of-hope-book-pFnvc1Cu6zI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>` },
       {
-        'id': 3, 'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/surja-sen-das-raj-ViMrMawjj7s-unsplash.jpg`, 'cover': `Photo by <a
+        'id': 3, 'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 1000', 'read': 'No', 'cover_url': `./images/compressed/surja-sen-das-raj-ViMrMawjj7s-unsplash.jpg`, 'cover': `Photo by <a
       href="https://unsplash.com/@surjasendas?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Surja
       Sen Das Raj</a> on <a
       href="https://unsplash.com/photos/a-copy-of-the-book-company-of-one-by-paul-jarviss-ViMrMawjj7s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>` },
       {
-        'id': 4, 'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 313', 'read': 'No', 'cover_url': `./images/compressed/5172496.jpg`, 'cover': `Image by <a
+        'id': 4, 'title': 'Getting started with adobe digital editions', 'author': 'Interior Designer', 'pages': '190 / 1000', 'read': 'No', 'cover_url': `./images/compressed/5172496.jpg`, 'cover': `Image by <a
       href="https://www.freepik.com/free-psd/world-forest-day-flyer-template_13164166.htm#query=book%20cover&position=45&from_view=search&track=ais&uuid=415fc42f-67bf-4cc9-90d8-c7112b586e9f">Freepik</a>` }
     ]
 

@@ -1,7 +1,13 @@
 @font-face {
   font-family: 'Inter';
   /* src: url('./../fonts/InterVariable.ttf'); */
-  src: url('./../fonts/InterVariable.ttf')
+  src: url('./../fonts/InterVariable/InterVariable.ttf')
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  /* src: url('./../fonts/InterVariable.ttf'); */
+  src: url('./../fonts/OpenSans/OpenSans.ttf')
 }
 
 * {
@@ -56,13 +62,14 @@ body {
 }
 
 #leftbar-categories-controls img,
-.card-controls-remove-icons {
+.card-controls-remove-icons, #main-header img {
   height: 2rem;
-}
-
-#leftbar-categories-controls img {
   cursor: pointer;
 }
+
+/* #leftbar-categories-controls img {
+  cursor: pointer;
+} */
 
 #leftbar-categories-controls p {
   color: grey;
@@ -108,7 +115,7 @@ body {
 
 #main-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 4fr;
   padding: 10px;
@@ -130,8 +137,26 @@ body {
   justify-items: start;
 }
 
+#form-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: greenyellow;
+  color: forestgreen;
+  font-weight: bold;
+  margin-top: 10%;
+}
+
+#myModal #form input {
+  padding: 5px;
+  width: 220px;
+  border-radius: 5px;
+  border: 1px solid #E5E7EB;
+}
+
 /* modal related code starting here... */
 .modal {
+  font-family: 'OpenSans';
+  /* font-weight: bold; */
   display: none;
   position: fixed;
   /* Sit on top */
@@ -161,7 +186,13 @@ body {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 30%;
+  border-radius: 0px 10px 10px 0px;
+  width: 20%;
+  min-width: fit-content;
+}
+
+#modal-content-form {
+  padding: 20px 0px 0px;
 }
 
 #modal-content-form #form {
@@ -169,6 +200,16 @@ body {
   flex-direction: column;
 }
 
+.form-input-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 3% 0%;
+}
+
+.form-input-div label {
+  margin-bottom: 3px;
+}
 /* The Close Button */
 .close {
   color: #aaaaaa;

@@ -9,7 +9,7 @@ export class Display {
   setModal() {
     const modal = document.getElementById('myModal');
     // image id attribute not showing up in DOM for some reason. So:
-    const btn = document.querySelector('img[alt=plus]');
+    const btn = document.querySelector('img[alt=addBook]');
     const span = document.getElementsByClassName("close")[0];
 
     btn.addEventListener('click', e => {

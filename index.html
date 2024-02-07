@@ -15,7 +15,7 @@
   <div id="leftbar">
     <div id="leftbar-categories-controls">
       <p>Categories</p>
-      <img src="./icons/plus.svg" alt="plus">
+      <img src="./icons/add-category.svg" alt="plus">
     </div>
     <div id="leftbar-categories-items">
       <a id="addButton" href="#"><img id="sss" src="./icons/book.svg" alt="book"></a>
@@ -25,20 +25,32 @@
           <div id="modal-content-form">
             <!-- <form action="#" id="form" onsubmit="event.preventDefault();submitForm()"> -->
             <form action="#" id="form" onsubmit="event.preventDefault();">
-              <label for="title">Title: <span aria-label="required"></span></label>
-              <input type="text" class="form_inputs" id="title" name="title" minlength="3" maxlength="79">
-              <label for="author">Author: <span aria-label="required"></span></label>
+              <div class="form-input-div">
+                <label for="title">Title: <span aria-label="required"></span></label>
+                <input type="text" class="form_inputs" id="title" name="title" minlength="3" maxlength="79">
+              </div>
+              <div class="form-input-div">
+                <label for="author">Author: <span aria-label="required"></span></label>
               <input type="text" class="form_inputs" id="author" name="author" minlength="3" maxlength="79">
-              <label for="pages">Pages: <span aria-label="required"></span></label>
+              </div>
+              <div class="form-input-div">
+                <label for="pages">Pages: <span aria-label="required"></span></label>
               <input type="text" class="form_inputs" id="pages" name="pages" minlength="3" maxlength="79">
-              <label for="read">Read: <span aria-label="required"></span></label>
+              </div>
+              <div class="form-input-div">
+                <label for="read">Read: <span aria-label="required"></span></label>
               <input type="text" class="form_inputs" id="read" name="read" minlength="3" maxlength="79">
-              <label for="cover-url">Cover URL: <span aria-label="required"></span></label>
+              </div>
+              <div class="form-input-div">
+                <label for="cover-url">Img URL: <span aria-label="required"></span></label>
               <input type="text" class="form_inputs" id="cover-url" name="cover-url" minlength="3">
-              <label for="cover">Cover Credit: <span aria-label="required"></span></label>
+              </div>
+              <div class="form-input-div">
+                <label for="cover">Img Credit: <span aria-label="required"></span></label>
               <input type="text" class="form_inputs" id="cover" name="cover" minlength="3">
+              </div>
             </form>
-            <button id="form_button" form="form" type="submit">Add Book</button>
+            <button id="form-button" form="form" type="submit">Add Book</button>
           </div>
           <span class="close">&times;</span>
         </div>
@@ -50,7 +62,15 @@
   </div>
   <div id="main">
     <div id="main-header">
-      <h1>A Bookish Galaxy...</h1>
+      <div id="main-header-left-div">
+        <img src="./icons/add-book.svg" alt="addBook">
+
+      </div>
+      <div id="main-header-center-div">
+        <h1>A Bookish Galaxy...</h1>
+      </div>
+      <div id="main-header-right-div"></div>
+      
     </div>
     <div id="main-body">
       <!-- User created cards will be created via DOM...
