@@ -86,8 +86,8 @@ class Main {
     let input_values_arr = [];
     // let book_id = this.bookObj.myLibrary.length + 1;
     let maxBookID = this.bookObj.myLibrary[0]['id'];
-    for(let bookObj of this.bookObj.myLibrary) {
-      if(maxBookID < bookObj['id']) {
+    for (let bookObj of this.bookObj.myLibrary) {
+      if (maxBookID < bookObj['id']) {
         maxBookID = bookObj['id'];
       }
     }
@@ -103,7 +103,7 @@ class Main {
         input_values_arr.push('Not specified');
     });
     // First add book to library, then show card:
-    if(this.bookObj.addBookToLibrary(input_values_arr)) {
+    if (this.bookObj.addBookToLibrary(input_values_arr)) {
       this.addCard(input_values_arr, book_id);
     }
     else {
@@ -116,14 +116,13 @@ class Main {
 
   addCard(singleBook_arr, book_id) {
     this.displayObj.addCard(singleBook_arr, book_id);
-    const cardEle = document.getElementById(`card-${book_id}`)
-    this.displayObj.showHideCardControls(cardEle);
-    this.processCardControls(cardEle, book_id);
+    this.displayObj.showHideCardControls(book_id);
+    this.processCardControls(book_id);
   }
 
 
 
-  processCardControls(cardEle, book_id) {
+  processCardControls(book_id) {
     // cardEle.addEventListener('click', e => {
     const remove_icon = document.getElementById(`card-controls-remove-icon-${book_id}`);
     const read_check = document.getElementById(`card${book_id}_status`);
@@ -131,28 +130,27 @@ class Main {
     for (let ele of controls_arr) {
       ele.addEventListener('click', e => {
         if (e.target.id == `card-controls-remove-icon-${book_id}`) {
-          cardEle.remove();
-            // As << book_id >> is basically index + 1, so taking index only:
-            this.bookObj.removeBookFromLibrary(book_id)
-          
-          // alert(`Book can't be removed for some reason`)
+          this.processRemoveControl(book_id);
+
         } else
           if (e.target.id == `card${book_id}_status`) {
-            // alert('here2');
-            const read_with_no = '<span class="read-span">Read: </span>No';
-            const read_with_yes = '<span class="read-span">Read: </span>Yes';
-
-            const para_id = document.getElementById(`Read${book_id}`);
-            if (para_id.innerHTML == read_with_no || para_id.innerHTML == '<span>Read: </span>') {
-              para_id.innerHTML = read_with_yes
-            }
-            else
-              para_id.innerHTML = read_with_no
-            // para_id.appendChild(document.createTextNode(`sss`));
+            // if read status checkbox is checked:
+            let checked = e.target.checked;
+            this.processChangeStatusControl(book_id, checked);
           }
       });
     }
-    // })
+  }
+
+  processRemoveControl(book_id) {
+    
+    this.displayObj.removeCardFromDisplay(book_id);
+    this.bookObj.removeBookFromLibrary(book_id);
+  }
+
+  processChangeStatusControl(book_id, checked) {
+    const read_status = this.bookObj.changeReadStatus(book_id, checked);
+    this.displayObj.displayChangedStatus(book_id, read_status);
   }
 
   resetModal() {

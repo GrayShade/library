@@ -52,8 +52,17 @@ export class Book {
     // console.log(this.myLibrary);
   }
 
-  changeReadStatus() {
-
+  changeReadStatus(book_id, checked) {
+    for(let i=0;i < this.myLibrary.length; i++) {
+      if(book_id == this.myLibrary[i]['id']) {
+        if (checked) {
+          this.myLibrary[i]['read'] = 'Yes';
+          return this.myLibrary[i]['read']
+        }
+        this.myLibrary[i]['read'] = 'No';
+        return this.myLibrary[i]['read']
+      }
+    }
   }
 }
 

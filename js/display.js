@@ -34,7 +34,7 @@ export class Display {
     const card_div = document.createElement("div");
     card_div.setAttribute('class', 'card');
     card_div.setAttribute('id', `card-${book_num}`);
-  
+
     document.getElementById("main-body").appendChild(card_div);
 
     const card_left_div = this.createLeftDiv(card_div, singleBook_arr);
@@ -76,7 +76,7 @@ export class Display {
     const p_span_txt_arr = ['title', 'By', 'Page', 'Read', 'Cred'];
     for (let i = 0; i <= 5; i++) {
       const p = document.createElement('p');
-      
+
 
       let p_value_txt = '';
 
@@ -141,7 +141,8 @@ export class Display {
     return card_cntrls;
   }
 
-  showHideCardControls(cardEle) {
+  showHideCardControls(book_id) {
+    const cardEle = document.getElementById(`card-${book_id}`);
     let events = ['mouseenter', 'mouseleave'];
     events.forEach(mouse_event => cardEle.addEventListener(mouse_event, (e) => {
       const card_controls = cardEle.querySelector('.card-controls');
@@ -156,6 +157,22 @@ export class Display {
     }));
   }
 
+  removeCardFromDisplay(book_id) {
+    const cardEle = document.getElementById(`card-${book_id}`);
+    cardEle.remove();
+  }
+
+  displayChangedStatus(book_id, read_status) {
+
+    const para_id = document.getElementById(`Read-${book_id}`);
+    if (read_status == 'yes') {
+      para_id.innerHTML = `<span class="read-span">Read: </span>${read_status}`;
+    }
+    else {
+      para_id.innerHTML = `<span class="read-span">Read: </span>${read_status}`;
+    }
+  }
+
   resetModal() {
     // reset form when it is submitted successfully:
     let form_inputs = document.querySelectorAll('#form input');
@@ -164,7 +181,7 @@ export class Display {
     });
   }
 
-  
+
 
   // showModal() {
   //   console.log('hi');
