@@ -26,28 +26,65 @@
             <!-- <form action="#" id="form" onsubmit="event.preventDefault();submitForm()"> -->
             <form action="#" id="form" onsubmit="event.preventDefault();">
               <div class="form-input-div">
-                <label for="title">Title: <span aria-label="required"></span></label>
-                <input type="text" class="form_inputs" id="title" name="title" minlength="3" maxlength="79">
+                <div class="label-and-tooltip-pair-div">
+                  <label for="title" class="heading">Title: <span aria-label="required">*</span></label>
+                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                </div>
+                <input type="text" class="required title-required form-inputs" id="title" name="title" minlength="3"
+                  maxlength="54" pattern="^[a-zA-Z]*$">
+                <span class="required title-required message" id="title-message"></span>
               </div>
               <div class="form-input-div">
-                <label for="author">Author: <span aria-label="required"></span></label>
-              <input type="text" class="form_inputs" id="author" name="author" minlength="3" maxlength="79">
+                <div class="label-and-tooltip-pair-div">
+                  <label for="author" class="heading">Author:</label>
+                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                </div>
+                <input type="text" class="message form-inputs" id="author" name="author" minlength="3" maxlength="79">
+                <span class="message" id="author-message"></span>
               </div>
               <div class="form-input-div">
-                <label for="pages">Pages: <span aria-label="required"></span></label>
-              <input type="text" class="form_inputs" id="pages" name="pages" minlength="3" maxlength="79">
+                <div class="label-and-tooltip-pair-div">
+                  <label for="pages-read" class="heading">Pages Read:</label>
+                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                </div>
+                <input type="text" class="form-inputs" id="pages-read" name="pages-read" minlength="3" maxlength="79">
+                <span class="message" id="pages-read-message"></span>
               </div>
               <div class="form-input-div">
-                <label for="read">Read: <span aria-label="required"></span></label>
-              <input type="text" class="form_inputs" id="read" name="read" minlength="3" maxlength="79">
+                <div class="label-and-tooltip-pair-div">
+                  <label for="pages-total" class="heading">Total Pages:</label>
+                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                </div>
+                <input type="text" class="form-inputs" id="pages-total" name="pages-total" minlength="3" maxlength="79">
+                <span class="message" id="pages-total-message"></span>
               </div>
               <div class="form-input-div">
-                <label for="cover-url">Img URL: <span aria-label="required"></span></label>
-              <input type="text" class="form_inputs" id="cover-url" name="cover-url" minlength="3">
+                <div class="label-and-tooltip-pair-div">
+                  <label for="read" class="heading">Completed:</label>
+                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                </div>
+                <!-- <input type="text" class="form-inputs" id="read" name="read" minlength="3" maxlength="79"> -->
+                <select name="read" id="read" class="form-inputs" name="read">
+                  <option value="Yes">Yes</option>
+                  <option value="No" selected>No</option>
+                </select>
+                <span class="message" id="completed-message"></span>
               </div>
               <div class="form-input-div">
-                <label for="cover">Img Credit: <span aria-label="required"></span></label>
-              <input type="text" class="form_inputs" id="cover" name="cover" minlength="3">
+                <div class="label-and-tooltip-pair-div">
+                  <label for="cover-url" class="heading">Img URL:</label>
+                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                </div>
+                <input type="text" class="form-inputs" id="cover-url" name="cover-url" minlength="3">
+                <span class="message" id="url-message"></span>
+              </div>
+              <div class="form-input-div">
+                <div class="label-and-tooltip-pair-div">
+                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                  <label for="cover" class="heading">Img Credit:</label>
+                </div>
+                <input type="text" class="form-inputs" id="cover" name="cover" minlength="3">
+                <span class="message" id="credit-message"></span>
               </div>
             </form>
             <button id="form-button" form="form" type="submit">Add Book</button>
@@ -63,14 +100,15 @@
   <div id="main">
     <div id="main-header">
       <div id="main-header-left-div">
-        <img src="./icons/add-book.svg" alt="addBook">
-
+        <!-- <p>Add New</p>
+        <img src="./icons/add-book.svg" alt="addBook"> -->
+        <button id="header-btn">New Book<span><img src="./icons/add-book.svg" alt="addBook"></span></button>
       </div>
       <div id="main-header-center-div">
-        <h1>A Bookish Galaxy...</h1>
+        <h1>Booklaxy...</h1>
       </div>
       <div id="main-header-right-div"></div>
-      
+
     </div>
     <div id="main-body">
       <!-- User created cards will be created via DOM...

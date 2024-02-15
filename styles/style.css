@@ -20,7 +20,7 @@ input[type="checkbox"] {
   appearance: auto;
 }
 
-input {
+input, select {
   border: 1px solid grey;
 }
 
@@ -62,7 +62,7 @@ body {
 }
 
 #leftbar-categories-controls img,
-.card-controls-remove-icons, #main-header img {
+.card-controls-remove-icons {
   height: 2rem;
   cursor: pointer;
 }
@@ -127,6 +127,42 @@ body {
   /* border: 1px solid grey; */
 }
 
+#main-header-left-div {
+  display: flex;
+  align-items: center;
+}
+
+
+
+ #main-header #header-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 20px;
+  /* background: #2f4f4f; */
+  background: #222831;
+  color: white;
+  font-weight: bold;
+  /* margin-top: 10%; */
+  font-family: cursive;
+  font-size: 1rem;
+}
+
+#main-header #header-btn:hover {
+  background: darkorange;
+  /* color: crimson; */
+}
+
+#main-header #header-btn:active, #form-button:active {
+  transform: scale(0.98);
+}
+
+#main-header img {
+  height: 1rem;
+ cursor: pointer; 
+}
+
 #main-body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(19.8rem, 0fr));
@@ -138,24 +174,36 @@ body {
 }
 
 #form-button {
+  cursor: pointer;
   padding: 10px 20px;
   border-radius: 20px;
-  background: greenyellow;
+  background: lightgreen;
   color: forestgreen;
   font-weight: bold;
   margin-top: 10%;
 }
 
-#myModal #form input {
+#form-button:hover {
+  background: darkorange;
+  color: whitesmoke;
+}
+
+#myModal #form input, #myModal #form select  {
   padding: 5px;
   width: 220px;
   border-radius: 5px;
   border: 1px solid #E5E7EB;
 }
 
+.message {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
 /* modal related code starting here... */
 .modal {
-  font-family: 'OpenSans';
+  /* font-family: 'OpenSans'; */
+  /* font-family: 'cursive'; */
   /* font-weight: bold; */
   display: none;
   position: fixed;
@@ -199,6 +247,88 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
+.label-and-tooltip-pair-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1px;
+
+}
+
+.heading {
+  font-size: 0.98em;
+  letter-spacing: 0.03em;
+}
+
+input {
+  border-color: #E5E7EB;
+}
+
+input:focus {
+  outline: none;
+  border-color: blue;
+  box-shadow: 0 3px 6px 0 lightgray;
+
+}
+
+input:invalid,
+.error:invalid {
+  border-color: red;
+}
+
+/* below snippets taken from https://www.instantshift.com/2018/05/11/create-tooltip-using-css/ .....................*/
+.tooltip {
+  display: inline;
+  position: relative;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0px 5px;
+  border-radius: 100%;
+  font-size: 14px;
+  cursor: help;
+  opacity: 1;
+  display: none;
+}
+
+.tooltip::before,
+.tooltip::after {
+  position: absolute;
+  left: 50%;
+  opacity: 1;
+  transition: allease0.3s;
+}
+
+.tooltip::before {
+  content: "";
+  border-width: 10px 8px 08px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.3) transparent transparent transparent;
+  top: -20px;
+  margin-left: -8px;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  background: rgba(0, 0, 0, 0.3);
+  top: -20px;
+  transform: translateY(-100%);
+  font-size: 14px;
+  margin-left: -150px;
+  width: 300px;
+  border-radius: 10px;
+  color: #fff;
+  padding: 14px;
+}
+
+/* Hover states */
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/*tooltip related code ending here...............................................................................  */
 
 .form-input-div {
   display: flex;
@@ -289,9 +419,13 @@ body {
   /* padding: 10px 0; */
 }
 
-.card-right-div-paras p span {
-  color: #dc143c;
+.card-right-div-paras-title, .p_span2_read_values {
+  /* color: #dc143c; */
   font-weight: bold;
+}
+
+.card-right-div-paras-title {
+  color: #e91e63;
 }
 
 .card-right-div-paras .by-span {
@@ -318,6 +452,10 @@ body {
   /* padding-bottom: 10px; */
 }
 
+.card-right-div-paras .p_span2_read_values {
+  color: grey;
+}
+
 .card-controls {
   display: flex;
   gap: 1rem;
@@ -337,6 +475,10 @@ body {
 .card-controls-remove-icons,
 .card-controls-read-checks {
   visibility: hidden;
+}
+
+input[type=checkbox] {
+  accent-color: rebeccapurple;
 }
 
 

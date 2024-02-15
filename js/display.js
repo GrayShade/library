@@ -8,8 +8,7 @@ export class Display {
 
   setModal() {
     const modal = document.getElementById('myModal');
-    // image id attribute not showing up in DOM for some reason. So:
-    const btn = document.querySelector('img[alt=addBook]');
+    const btn = document.getElementById('header-btn');
     const span = document.getElementsByClassName("close")[0];
 
     btn.addEventListener('click', e => {
@@ -29,17 +28,17 @@ export class Display {
     });
   }
 
-  addCard(singleBook_arr, book_num) {
+  addCard(singleBook_arr, book_id) {
 
     const card_div = document.createElement("div");
     card_div.setAttribute('class', 'card');
-    card_div.setAttribute('id', `card-${book_num}`);
+    card_div.setAttribute('id', `card-${book_id}`);
 
     document.getElementById("main-body").appendChild(card_div);
 
     const card_left_div = this.createLeftDiv(card_div, singleBook_arr);
-    const card_right_div = this.createRightDiv(card_div, singleBook_arr, book_num);
-    const card_cntrls = this.createCardControls(card_right_div, singleBook_arr, book_num)
+    const card_right_div = this.createRightDiv(card_div, singleBook_arr, book_id);
+    const card_cntrls = this.createCardControls(card_right_div, singleBook_arr, book_id)
 
 
   }
@@ -51,15 +50,15 @@ export class Display {
     // card_left_div.style.backgroundImage = `url(${singleBook_arr[4]})`;
     // card_div_parentEle.appendChild(card_divEle);
     const img = document.createElement('img');
-    img.setAttribute('src', `${singleBook_arr[5]}`);
+    img.setAttribute('src', `${singleBook_arr[6]}`);
 
-    img.setAttribute('src', singleBook_arr[5]);
+    img.setAttribute('src', singleBook_arr[6]);
     img.setAttribute('alt', 'Avatar');
     card_left_div.appendChild(img);
     return card_left_div;
   }
 
-  createRightDiv(card_div, singleBook_arr, book_num) {
+  createRightDiv(card_div, singleBook_arr, book_id) {
     const card_right_div = document.createElement('div');
     card_right_div.setAttribute('class', 'card-right-div');
     card_div.appendChild(card_right_div);
@@ -86,22 +85,41 @@ export class Display {
       } else
         if (i == 5) {
 
-          // p.innerHTML = `<span id="cred-span${book_num}">Cred: </span>` + singleBook_arr[i];
-          p.innerHTML = `<span class="cred-span">Cred: </span>` + singleBook_arr[i + 1];
-          p.setAttribute('id', `${p_span_txt_arr[4]}-${book_num}`);
+          // p.innerHTML = `<span id="cred-span${book_id}">Cred: </span>` + singleBook_arr[i];
+          p.innerHTML = `<span class="cred-span card-right-div-paras-title">Cred: </span>` + singleBook_arr[i + 2];
+          p.setAttribute('id', `${p_span_txt_arr[4]}-${book_id}`);
         } else {
-          p.setAttribute('id', `${p_span_txt_arr[i]}-${book_num}`);
+          p.setAttribute('id', `${p_span_txt_arr[i]}-${book_id}`);
           const p_span = document.createElement('span');
-          // p_span.setAttribute('id', `${p_span_txt_arr[i].toLowerCase()}-span${book_num}`);
-          p_span.setAttribute('class', `${p_span_txt_arr[i].toLowerCase()}-span`);
+          // p_span.setAttribute('id', `${p_span_txt_arr[i].toLowerCase()}-span${book_id}`);
+          // p_span.setAttribute('id', ``);
+          p_span.setAttribute('class', `${p_span_txt_arr[i].toLowerCase()}-span card-right-div-paras-title`);
           const p_span_title_txt = document.createTextNode(`${p_span_txt_arr[i]}: `);
           p_span.appendChild(p_span_title_txt);
 
           // adding span first in << p >>:
           p.insertBefore(p_span, p.firstChild);
           // 
-          p_value_txt = document.createTextNode(singleBook_arr[i + 1]);
-          p.appendChild(p_value_txt);
+          if (i == 3) {
+            const p_span2 = document.createElement('span');
+            p_span2.setAttribute('id', `p_span2-read-value-${book_id}`);
+            p_span2.setAttribute('class', 'p_span2_read_values');
+            p.appendChild(p_span2);
+            p_value_txt = document.createTextNode(singleBook_arr[i + 2]);
+            p_span2.appendChild(p_value_txt);
+
+            if(singleBook_arr[i + 2] == 'Yes') {
+              p_span2.style.color = 'green';
+            }
+          } else if (i == 2) {
+            p_value_txt = document.createTextNode(`${singleBook_arr[i + 1]} / ${singleBook_arr[i + 2]}`);
+            p.appendChild(p_value_txt);
+          }
+          else {
+            p_value_txt = document.createTextNode(singleBook_arr[i + 1]);
+            p.appendChild(p_value_txt);
+          }
+
         }
 
       card_right_div_paras.appendChild(p);
@@ -110,30 +128,31 @@ export class Display {
     return card_right_div;
   }
 
-  createCardControls(card_right_div, singleBook_arr, book_num) {
+  createCardControls(card_right_div, singleBook_arr, book_id) {
     const card_cntrls = document.createElement('div');
     card_cntrls.setAttribute('class', 'card-controls');
     card_right_div.appendChild(card_cntrls);
 
     const card_cntrls_remove_icons = document.createElement('img');
     card_cntrls_remove_icons.setAttribute('class', 'card-controls-remove-icons');
-    card_cntrls_remove_icons.setAttribute('id', `card-controls-remove-icon-${book_num}`);
+    card_cntrls_remove_icons.setAttribute('id', `card-controls-remove-icon-${book_id}`);
     card_cntrls_remove_icons.setAttribute('src', './icons/close-thick.svg');
     card_cntrls_remove_icons.setAttribute('alt', 'close-thick');
     card_cntrls.appendChild(card_cntrls_remove_icons);
 
     const card_cntrls_read_checks = document.createElement('div');
     card_cntrls_read_checks.setAttribute('class', 'card-controls-read-checks');
-    card_cntrls_read_checks.setAttribute('id', `card-controls-read-check-${book_num}`);
+    card_cntrls_read_checks.setAttribute('id', `card-controls-read-check-${book_id}`);
     card_cntrls.appendChild(card_cntrls_read_checks);
 
     const card_cntrls_read_chek_status = document.createElement('input');
     card_cntrls_read_chek_status.setAttribute('type', 'checkbox');
-    card_cntrls_read_chek_status.setAttribute('id', `card${book_num}_status`);
+    card_cntrls_read_chek_status.setAttribute('id', `card${book_id}_status`);
+    card_cntrls_read_chek_status.setAttribute('class', 'read-checkbox');
     card_cntrls_read_checks.appendChild(card_cntrls_read_chek_status);
 
     const card_cntrls_read_cheks_labl = document.createElement('label');
-    card_cntrls_read_cheks_labl.setAttribute('for', `card${book_num}_status`);
+    card_cntrls_read_cheks_labl.setAttribute('for', `card${book_id}_status`);
     const card_cntrls_read_cheks_labl_txt = document.createTextNode('Read');
     card_cntrls_read_cheks_labl.appendChild(card_cntrls_read_cheks_labl_txt);
     card_cntrls_read_checks.appendChild(card_cntrls_read_cheks_labl);
@@ -164,21 +183,31 @@ export class Display {
 
   displayChangedStatus(book_id, read_status) {
 
-    const para_id = document.getElementById(`Read-${book_id}`);
-    if (read_status == 'yes') {
-      para_id.innerHTML = `<span class="read-span">Read: </span>${read_status}`;
+    // const para_id = document.getElementById(`Read-${book_id}`);
+    const p_span2 = document.getElementById(`p_span2-read-value-${book_id}`)
+    if (read_status == 'Yes') {
+      // para_id.innerHTML = `<span class="read-span">Read: </span>${read_status}`;
+      p_span2.innerHTML = read_status;
+      p_span2.style.color = 'green';
     }
     else {
-      para_id.innerHTML = `<span class="read-span">Read: </span>${read_status}`;
+      // para_id.innerHTML = `<span class="read-span">Read: </span>${read_status}`;
+      p_span2.innerHTML = read_status;
+      p_span2.style.color = 'grey';
     }
   }
 
   resetModal() {
     // reset form when it is submitted successfully:
-    let form_inputs = document.querySelectorAll('#form input');
+    const form_inputs = document.querySelectorAll('#form input');
+    const input_messages = document.querySelectorAll('.message')
     form_inputs.forEach((ele, idx) => {
       ele.value = '';
     });
+
+    for(let message of input_messages) {
+      message.value = '';
+    }
   }
 
 
