@@ -57,10 +57,6 @@ class Main {
 
   }
 
-  // addBookToLibrary(book_arr) {
-  //   this.bookObj.addBookToLibrary(book_arr);
-  // }
-
   displayLibraryBooks(myLibrary) {
 
     myLibrary.forEach((book_obj, idx) => {
@@ -71,9 +67,6 @@ class Main {
     });
 
   }
-
-
-
   setModal() {
     this.displayObj.setModal();
     const form = document.getElementById('form');
@@ -84,21 +77,23 @@ class Main {
       input.addEventListener(('input'), e => {
         const ele_name = e.target.name;
         const ele_message = `${ele_name}-message`;
-        this.validationObj.checkEmptyBeforeSubmit(e, ele_name, ele_message);
+        this.validationObj.validateBeforeSubmit(e, ele_name, ele_message);
       });
     }
     
     form.addEventListener(('submit'), e => {
-      console.log('submitted...');
+      // console.log('submitted...');
       const req_inputs = document.querySelectorAll('input.required');
       const req_msg_spans = document.querySelectorAll('span.required');
+      let validation_status = false;
       for (let i = 0; i < req_inputs.length; i++) {
-        this.validationObj.checkEmptyAfterSubmit(req_inputs[i], req_msg_spans[i]);
+        validation_status = this.validationObj.validateAfterSubmit(req_inputs[i], req_msg_spans[i]);
       }
-      this.processModal(e);
+      if (validation_status) {
+        this.processModal(e);
+      }
     });
   }
-
   processModal(e) {
     let input_values_arr = [];
     // let book_id = this.bookObj.myLibrary.length + 1;

@@ -2,7 +2,7 @@ export class Validation {
   constructor() {
     this.setEventListeners();
   }
-  checkEmptyBeforeSubmit(e, ele_name, ele_message) {
+  validateBeforeSubmit(e, ele_name, ele_message) {
     // const ele_name = 
     const ele_val = document.getElementById(ele_name).value;
     const message = document.getElementById(ele_message);
@@ -48,7 +48,7 @@ export class Validation {
     document.addEventListener('focusout', (e) => {
       // <<focusout is firing on every element of document, so returning if
       // focused out element is not input:
-      if ((e.target.tagName !== 'INPUT') || (e.target.classList.contains('read-checkbox'))) {
+      if ((!e.target.classList.contains('form-inputs')) || (e.target.classList.contains('read-checkbox'))) {
         return;
       }
 
@@ -71,7 +71,7 @@ export class Validation {
     document.addEventListener('focusin', (e) => {
       // <<focusin is firing on every element of document, so returning if
       // focused in element is not input:
-      if ((e.target.tagName !== 'INPUT') || (e.target.classList.contains('read-checkbox'))) {
+      if ((!e.target.classList.contains('form-inputs')) || (e.target.classList.contains('read-checkbox'))) {
         return;
       }
 
@@ -91,15 +91,16 @@ export class Validation {
     });
   }
 
-  checkEmptyAfterSubmit(ele, msg_span) {
+  validateAfterSubmit(ele, msg_span) {
     const ele_val = ele.value;
     if (ele_val != '' && ele.checkValidity() === true) {
-      msg_span.innerHTML = ''
+      msg_span.innerHTML = '';
+      return true;
     } else {
       ele.style.borderColor = 'red';
       msg_span.style.color = 'red';
       msg_span.innerHTML = "*Field Required!"
-
+      return false;
     }
   }
 }
