@@ -23,47 +23,51 @@
       <div id="myModal" class="modal">
         <div class="modal-content">
           <div id="modal-content-form">
-            <!-- <form action="#" id="form" onsubmit="event.preventDefault();submitForm()"> -->
             <form action="#" id="form" onsubmit="event.preventDefault();">
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
                   <label for="title" class="heading">Title: <span aria-label="required">*</span></label>
-                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                  <span class="tooltip"
+                    data-tooltip="Minimum 1 & maximum 79 characters, no space at start/end & only single space between words">?</span>
                 </div>
-                <input type="text" class="required title-required form-inputs" id="title" name="title" minlength="3"
-                  maxlength="54" pattern="^[a-zA-Z]*$">
+                <!-- below regex pattern taken & modified from https://stackoverflow.com/a/35702586. -->
+                <input type="text" class="required title-required form-inputs" id="title" name="title" minlength="1"
+                  maxlength="79" pattern="^[\w\S]+( [\w\S]+)*$">
                 <span class="required title-required message" id="title-message"></span>
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
                   <label for="author" class="heading">Author:</label>
-                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                  <span class="tooltip"
+                    data-tooltip="Minimum 1 & maximum 79 characters, no space at start/end & only single space between words">?</span>
                 </div>
-                <input type="text" class="message form-inputs" id="author" name="author" minlength="3" maxlength="79">
+                <input type="text" class="message form-inputs" id="author" name="author" minlength="1" maxlength="79"
+                  pattern="^[\w\S]+( [\w\S]+)*$">
                 <span class="message" id="author-message"></span>
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
                   <label for="pages-read" class="heading">Pages Read:</label>
-                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                  <span class="tooltip" data-tooltip="Min 0 & max 9999, numbers only, no space at start/end">?</span>
                 </div>
-                <input type="text" class="form-inputs" id="pages-read" name="pages-read" minlength="3" maxlength="79">
+                <!-- As pattern attribute is not working with << type="number" >>, so using type="text" -->
+                <input type="text" class="form-inputs" id="pages-read" name="pages-read" pattern="^[\d]{0,4}$">
                 <span class="message" id="pages-read-message"></span>
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
                   <label for="pages-total" class="heading">Total Pages:</label>
-                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                  <span class="tooltip" data-tooltip="Min 0 & max 9999, numbers only, no space at start/end">?</span>
                 </div>
-                <input type="text" class="form-inputs" id="pages-total" name="pages-total" minlength="3" maxlength="79">
+                <input type="text" class="form-inputs" id="pages-total" name="pages-total" pattern="^[\d]{0,4}$">
                 <span class="message" id="pages-total-message"></span>
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
                   <label for="read" class="heading">Completed:</label>
-                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                  <!-- No tooltip needed below but Label text will disappear on selecting otherwise without span below -->
+                  <span class="tooltip" data-tooltip="">?</span>
                 </div>
-                <!-- <input type="text" class="form-inputs" id="read" name="read" minlength="3" maxlength="79"> -->
                 <select name="read" id="read" class="form-inputs" name="read">
                   <option value="Yes">Yes</option>
                   <option value="No" selected>No</option>
@@ -73,17 +77,20 @@
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
                   <label for="cover-url" class="heading">Img URL:</label>
-                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
+                  <span class="tooltip"
+                    data-tooltip="Minimum 1 & maximum 79 characters, no space at start/end & only single space between words">?</span>
                 </div>
-                <input type="text" class="form-inputs" id="cover-url" name="cover-url" minlength="3">
+                <input type="text" class="form-inputs" id="cover-url" name="cover-url" pattern="^[\w\S]+( [\w\S]+)*$">
                 <span class="message" id="cover-url-message"></span>
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
-                  <span class="tooltip" data-tooltip="Minimum 3 & maximum 54 characters">?</span>
                   <label for="cover" class="heading">Img Credit:</label>
+                  <span class="tooltip"
+                    data-tooltip="Minimum 1 & maximum 79 characters, no space at start/end & only single space between words">?</span>
                 </div>
-                <input type="text" class="form-inputs" id="cover" name="cover" minlength="3">
+                <input type="text" class="form-inputs" id="cover" name="cover" minlength="0"
+                  pattern="^[\w\S]+( [\w\S]+)*$">
                 <span class="message" id="cover-message"></span>
               </div>
             </form>
