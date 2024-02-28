@@ -38,7 +38,7 @@ export class Display {
 
     const card_left_div = this.createLeftDiv(card_div, singleBook_arr);
     const card_right_div = this.createRightDiv(card_div, singleBook_arr, book_id);
-    const card_cntrls = this.createCardControls(card_right_div, singleBook_arr, book_id)
+    const card_cntrls = this.createCardControls(card_right_div, book_id)
 
 
   }
@@ -47,12 +47,15 @@ export class Display {
     const card_left_div = document.createElement('div');
     card_left_div.setAttribute('class', 'card-left-div');
     card_div.appendChild(card_left_div);
-    // card_left_div.style.backgroundImage = `url(${singleBook_arr[4]})`;
-    // card_div_parentEle.appendChild(card_divEle);
     const img = document.createElement('img');
-    img.setAttribute('src', `${singleBook_arr[6]}`);
+    let img_input = singleBook_arr[6];
+    const default_image = './images/compressed/default-image.jpg';
+    if (img_input === 'Nil') { // if no image link used 
+      img_input = default_image;
+    }
+    img.setAttribute('src', `${img_input}`);
 
-    img.setAttribute('src', singleBook_arr[6]);
+    img.setAttribute('src', img_input);
     img.setAttribute('alt', 'Avatar');
     card_left_div.appendChild(img);
     return card_left_div;
@@ -64,71 +67,76 @@ export class Display {
     card_div.appendChild(card_right_div);
 
     const card_right_div_title = document.createElement('h4');
-    const title_innerText = document.createTextNode(singleBook_arr[1]);
-    card_right_div_title.appendChild(title_innerText);
+    const title_text = singleBook_arr[1];
+    const title_text_node = document.createTextNode(title_text);
+    card_right_div_title.appendChild(title_text_node);
     card_right_div.appendChild(card_right_div_title);
 
     const card_right_div_paras = document.createElement('div');
     card_right_div_paras.setAttribute('class', 'card-right-div-paras');
     card_right_div.appendChild(card_right_div_paras);
 
-    const p_span_txt_arr = ['title', 'By', 'Page', 'Read', 'Cred'];
+    const p_span_txt_arr = ['title', 'Writer', 'Pages', 'Read', 'Cred'];
     for (let i = 0; i <= 5; i++) {
       const p = document.createElement('p');
-
 
       let p_value_txt = '';
 
       if ((i == 4) || (i < 1)) {
-        // skip if its image link
+        // Skip if its image link or book title
         continue;
       } else
-        if (i == 5) {
+        if (i == 5) { // Against Credit of Image
+          let img_credit_txt = '';
+          if (singleBook_arr[6] === 'Nil') {
+            img_credit_txt = `Photo by <a href="https://unsplash.com/@mediamodifier?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Mediamodifier</a> on <a href="https://unsplash.com/photos/white-box-on-white-table-kML003ksO_0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>`;
+          } else {
+            img_credit_txt = singleBook_arr[i + 2];
+          }
 
-          // p.innerHTML = `<span id="cred-span${book_id}">Cred: </span>` + singleBook_arr[i];
-          p.innerHTML = `<span class="cred-span card-right-div-paras-title">Cred: </span>` + singleBook_arr[i + 2];
+          
+          p.innerHTML = `<span class="cred-span card-right-div-paras-title">Credit: </span>` + img_credit_txt;
           p.setAttribute('id', `${p_span_txt_arr[4]}-${book_id}`);
         } else {
           p.setAttribute('id', `${p_span_txt_arr[i]}-${book_id}`);
           const p_span = document.createElement('span');
-          // p_span.setAttribute('id', `${p_span_txt_arr[i].toLowerCase()}-span${book_id}`);
-          // p_span.setAttribute('id', ``);
           p_span.setAttribute('class', `${p_span_txt_arr[i].toLowerCase()}-span card-right-div-paras-title`);
           const p_span_title_txt = document.createTextNode(`${p_span_txt_arr[i]}: `);
           p_span.appendChild(p_span_title_txt);
 
           // adding span first in << p >>:
           p.insertBefore(p_span, p.firstChild);
-          // 
-          if (i == 3) {
+          if (i == 3) { // Against Read
             const p_span2 = document.createElement('span');
             p_span2.setAttribute('id', `p_span2-read-value-${book_id}`);
             p_span2.setAttribute('class', 'p_span2_read_values');
             p.appendChild(p_span2);
-            p_value_txt = document.createTextNode(singleBook_arr[i + 2]);
+            const read_status_txt = singleBook_arr[i + 2];
+            p_value_txt = document.createTextNode(read_status_txt);
             p_span2.appendChild(p_value_txt);
 
-            if(singleBook_arr[i + 2] == 'Yes') {
+            if (singleBook_arr[i + 2] == 'Yes') {
               p_span2.style.color = 'green';
             }
-          } else if (i == 2) {
-            p_value_txt = document.createTextNode(`${singleBook_arr[i + 1]} / ${singleBook_arr[i + 2]}`);
+          } else if (i == 2) { // Against Pages
+            const pages_read_txt = singleBook_arr[i + 1];
+            const pages_total_txt = singleBook_arr[i + 2];
+            p_value_txt = document.createTextNode(`${pages_read_txt} / ${pages_total_txt}`);
             p.appendChild(p_value_txt);
           }
-          else {
-            p_value_txt = document.createTextNode(singleBook_arr[i + 1]);
+          else { // Against Writer
+            const writer_txt = singleBook_arr[i + 1];
+            p_value_txt = document.createTextNode(writer_txt);
             p.appendChild(p_value_txt);
-          }
 
+          }
         }
-
       card_right_div_paras.appendChild(p);
-
     }
     return card_right_div;
   }
 
-  createCardControls(card_right_div, singleBook_arr, book_id) {
+  createCardControls(card_right_div, book_id) {
     const card_cntrls = document.createElement('div');
     card_cntrls.setAttribute('class', 'card-controls');
     card_right_div.appendChild(card_cntrls);
@@ -183,15 +191,12 @@ export class Display {
 
   displayChangedStatus(book_id, read_status) {
 
-    // const para_id = document.getElementById(`Read-${book_id}`);
     const p_span2 = document.getElementById(`p_span2-read-value-${book_id}`)
     if (read_status == 'Yes') {
-      // para_id.innerHTML = `<span class="read-span">Read: </span>${read_status}`;
       p_span2.innerHTML = read_status;
       p_span2.style.color = 'green';
     }
     else {
-      // para_id.innerHTML = `<span class="read-span">Read: </span>${read_status}`;
       p_span2.innerHTML = read_status;
       p_span2.style.color = 'grey';
     }
@@ -205,16 +210,8 @@ export class Display {
       ele.value = '';
     });
 
-    for(let message of input_messages) {
+    for (let message of input_messages) {
       message.value = '';
     }
   }
-
-
-
-  // showModal() {
-  //   console.log('hi');
-  // }
 }
-
-// export default Display

@@ -64,6 +64,10 @@ export class Validation {
       if (inputEle.style.borderColor == 'blue') {
         inputEle.style.borderColor = '#E5E7EB';
       }
+
+            // For hiding optional brackets:
+            const form_info_brackets_span = document.getElementById(`${e.target.id}-form-info-brackets`);
+            form_info_brackets_span.style.visibility = 'hidden';
     });
 
     // if user moves to next element which has error but no tooltip because of
@@ -88,11 +92,17 @@ export class Validation {
       else {
         toolTipSpan.style.display = 'none';
       }
+
+      // For showing optional brackets:
+      const form_info_brackets_span = document.getElementById(`${e.target.id}-form-info-brackets`);
+      form_info_brackets_span.style.visibility = 'visible';
+
     });
   }
 
-  validateAfterSubmit(ele, msg_span) {
+  validateRequiredAfterSubmit(ele, msg_span) {
     const ele_val = ele.value;
+
     if (ele_val != '' && ele.checkValidity() === true) {
       msg_span.innerHTML = '';
       return true;
@@ -102,5 +112,34 @@ export class Validation {
       msg_span.innerHTML = "*Field Required!"
       return false;
     }
+
+  }
+
+  validateOptionalAfterSubmit(ele, msg_span) {
+
+    if(ele.id == 'pages-total') {
+      const pages_read = document.getElementById('pages-read').value;
+      const pages_total = document.getElementById('pages-total').value;
+      if ((pages_read != '') && (Number(pages_read) >  Number(pages_total))) {
+        ele.style.borderColor = 'red';
+        msg_span.style.color = 'red';
+        msg_span.innerHTML = "Total must be more or equal to read"
+        return false;
+      }
+    }
+    return true;
+  }
+
+  handleNullEtc(singleBook_arr) {
+    let new_arr = [];
+    for(let value of singleBook_arr) {
+      // As 0 == '', so using === instead of ==:
+      if (value === '') {
+        new_arr.push('Nil');
+      } else {
+      new_arr.push(value);
+      }
+    }
+    return new_arr
   }
 }

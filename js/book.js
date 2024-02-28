@@ -28,20 +28,9 @@ export class Book {
       return true;
     }
     return false;
-
-    // const fs = require('node:fs');
-    // const content = 'Some content!';
-    // fs.writeFile('/test.txt', content, err => {
-    // if (err) {
-    //   console.error(err);
-    // }
-    // file written successfully
-    // });
   }
 
   removeBookFromLibrary(book_id) {
-    // console.log(`books before: removal: `);
-    // console.log(this.myLibrary);
     for (let i = 0; i < this.myLibrary.length; i++) {
       if (book_id == this.myLibrary[i]['id']) {
         this.myLibrary.splice(i, 1);
@@ -49,9 +38,6 @@ export class Book {
       }
 
     }
-
-    // console.log(`books after removal:`);
-    // console.log(this.myLibrary);
   }
 
   changeReadStatus(book_id, checked) {

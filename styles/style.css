@@ -210,7 +210,7 @@ body {
   /* Sit on top */
   z-index: 1;
   /* Location of the box */
-  padding-top: 100px;
+  padding-top: 60px;
 
   left: 0;
   top: 0;
@@ -232,10 +232,10 @@ body {
   align-items: center;
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: 15px 30px 20px 30px;
   border: 1px solid #888;
   border-radius: 0px 10px 10px 0px;
-  width: 20%;
+  width: 21%;
   min-width: fit-content;
 }
 
@@ -415,6 +415,11 @@ input:invalid,
   background: #d3d3d3;
 }
 
+.card-right-div h4,
+.card-right-div-paras {
+  overflow-wrap: anywhere;
+}
+
 .card-right-div-paras {
   /* padding: 10px 0; */
 }
@@ -434,7 +439,7 @@ input:invalid,
 
 .card-right-div-paras .page-span,
 .card-right-div-paras .read-span {
-  padding-right: 0.1rem;
+  padding-right: 0.5rem;
 }
 
 .cred_span {
@@ -479,6 +484,13 @@ input:invalid,
 
 input[type=checkbox] {
   accent-color: rebeccapurple;
+}
+
+.form-info-brackets {
+  color: grey;
+  font-style: italic;
+  font-size: 0.8em;
+  visibility: hidden;
 }
 
 
