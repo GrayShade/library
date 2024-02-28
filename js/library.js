@@ -1,5 +1,4 @@
 import { Display } from './display.js';
-import { Shelf } from './shelf.js';
 import { Book } from './book.js';
 import { Validation } from './validation.js';
 
@@ -119,7 +118,6 @@ class Main {
     // First add book to library, then show card:
     if (this.bookObj.addBookToLibrary(input_values_arr)) {
       this.addCard(input_values_arr, book_id);
-      // console.log(this.bookObj.myLibrary);
     }
     else {
       // convert below to try catch for any errors:

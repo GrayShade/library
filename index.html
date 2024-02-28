@@ -26,7 +26,8 @@
             <form action="#" id="form" onsubmit="event.preventDefault();">
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
-                  <label for="title" class="heading">Title: <span aria-label="required">*</span><span id="title-form-info-brackets" class="form-info-brackets">(Required)</span></label>
+                  <label for="title" class="heading">Title: <span aria-label="required">*</span><span
+                      id="title-form-info-brackets" class="form-info-brackets">(Required)</span></label>
                   <span class="tooltip"
                     data-tooltip="Minimum 1 & maximum 79 characters, no space at start/end & only single space between words">?</span>
                 </div>
@@ -37,7 +38,8 @@
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
-                  <label for="author" class="heading">Author: <span id="author-form-info-brackets" class="form-info-brackets">(Optional)</span></label>
+                  <label for="author" class="heading">Author: <span id="author-form-info-brackets"
+                      class="form-info-brackets">(Optional)</span></label>
                   <span class="tooltip"
                     data-tooltip="Minimum 1 & maximum 79 characters, no space at start/end & only single space between words">?</span>
                 </div>
@@ -47,7 +49,8 @@
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
-                  <label for="pages-read" class="heading">Pages Read: <span id="pages-read-form-info-brackets" class="form-info-brackets">(Optional)</span></label>
+                  <label for="pages-read" class="heading">Pages Read: <span id="pages-read-form-info-brackets"
+                      class="form-info-brackets">(Optional)</span></label>
                   <span class="tooltip" data-tooltip="Min 0 & max 9999, numbers only, no space at start/end">?</span>
                 </div>
                 <!-- As pattern attribute is not working with << type="number" >>, so using type="text" -->
@@ -56,15 +59,18 @@
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
-                  <label for="pages-total" class="heading">Total Pages: <span id="pages-total-form-info-brackets" class="form-info-brackets">(Optional)</span></label>
+                  <label for="pages-total" class="heading">Total Pages: <span id="pages-total-form-info-brackets"
+                      class="form-info-brackets">(Optional)</span></label>
                   <span class="tooltip" data-tooltip="Min 0 & max 9999, numbers only, no space at start/end">?</span>
                 </div>
-                <input type="text" class="optional form-inputs" id="pages-total" name="pages-total" pattern="^[\d]{0,4}$">
+                <input type="text" class="optional form-inputs" id="pages-total" name="pages-total"
+                  pattern="^[\d]{0,4}$">
                 <span class="optional message" id="pages-total-message"></span>
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
-                  <label for="read" class="heading">Completed: <span id="read-form-info-brackets" class="form-info-brackets">(Optional)</span></label>
+                  <label for="read" class="heading">Completed: <span id="read-form-info-brackets"
+                      class="form-info-brackets">(Optional)</span></label>
                   <!-- No tooltip needed below but Label text will disappear on selecting otherwise without span below -->
                   <span class="tooltip" data-tooltip="">?</span>
                 </div>
@@ -76,16 +82,19 @@
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
-                  <label for="cover-url" class="heading">Img URL: <span id="cover-url-form-info-brackets" class="form-info-brackets">(Optional)</span></label>
+                  <label for="cover-url" class="heading">Img URL: <span id="cover-url-form-info-brackets"
+                      class="form-info-brackets">(Optional)</span></label>
                   <span class="tooltip"
                     data-tooltip="Minimum 1 & maximum 79 characters, no space at start/end & only single space between words">?</span>
                 </div>
-                <input type="text" class="optional form-inputs" id="cover-url" name="cover-url" pattern="^[\w\S]+( [\w\S]+)*$">
+                <input type="text" class="optional form-inputs" id="cover-url" name="cover-url"
+                  pattern="^[\w\S]+( [\w\S]+)*$">
                 <span class="optional message" id="cover-url-message"></span>
               </div>
               <div class="form-input-div">
                 <div class="label-and-tooltip-pair-div">
-                  <label for="cover" class="heading">Img Credit: <span id="cover-form-info-brackets" class="form-info-brackets">(Optional)</span></label>
+                  <label for="cover" class="heading">Img Credit: <span id="cover-form-info-brackets"
+                      class="form-info-brackets">(Optional)</span></label>
                   <span class="tooltip"
                     data-tooltip="Minimum 1 & maximum 79 characters, no space at start/end & only single space between words">?</span>
                 </div>
@@ -143,8 +152,6 @@
        .............................................................. -->
     </div>
   </div>
-  <!-- <div id="footer"></div> -->
-
 </body>
 
 </html>
