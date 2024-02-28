@@ -83,7 +83,7 @@ class Main {
       let req_fields_status = false;
       let optional_fields_status = false;
       for (let i = 0; i < req_inputs.length; i++) {
-        req_fields_status = this.validationObj.validateRequiredAfterSubmit(req_inputs[i], req_msg_spans[i]);
+        req_fields_status = this.validationObj.validateRequiredAfterSubmit(req_inputs[i], req_msg_spans[i], this.bookObj.myLibrary);
       }
       const optional_inputs = document.querySelectorAll('input.optional');
       const optional_spans = document.querySelectorAll('span.optional');
