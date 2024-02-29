@@ -6,9 +6,7 @@ export class Validation {
     // const ele_name = 
     const ele_val = document.getElementById(ele_name).value;
     const message = document.getElementById(ele_message);
-
     const ele = e.target;
-
     if (e.key === 'Tab') {
       return;
     }
@@ -20,7 +18,6 @@ export class Validation {
     else {
       toolTipSpan.style.display = 'none';
     }
-
 
     if (!ele.classList.contains('required') && ele_val == '') {
       ele.style.borderColor = 'blue';
@@ -40,7 +37,6 @@ export class Validation {
           message.style.color = 'red';
           message.innerHTML = "*Field Required!"
         }
-
 
   }
   #setEventListeners() {
@@ -80,7 +76,7 @@ export class Validation {
       }
 
       const inputEle = e.target;
-      // no need to run this on button:
+      // return if it was a button:
       if (inputEle.type === 'submit') {
         return;
       }

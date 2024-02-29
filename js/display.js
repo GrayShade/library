@@ -1,6 +1,6 @@
 export class Display {
   constructor() {
-    
+
   }
   displayBooks(myLibrary) {
     console.log(myLibrary);
@@ -36,14 +36,14 @@ export class Display {
 
     document.getElementById("main-body").appendChild(card_div);
 
-    const card_left_div = this.createLeftDiv(card_div, singleBook_arr);
-    const card_right_div = this.createRightDiv(card_div, singleBook_arr, book_id);
-    const card_cntrls = this.createCardControls(card_right_div, book_id)
+    const card_left_div = this.#createLeftDiv(card_div, singleBook_arr);
+    const card_right_div = this.#createRightDiv(card_div, singleBook_arr, book_id);
+    const card_cntrls = this.#createCardControls(card_right_div, book_id)
 
 
   }
 
-  createLeftDiv(card_div, singleBook_arr) {
+  #createLeftDiv(card_div, singleBook_arr) {
     const card_left_div = document.createElement('div');
     card_left_div.setAttribute('class', 'card-left-div');
     card_div.appendChild(card_left_div);
@@ -61,7 +61,7 @@ export class Display {
     return card_left_div;
   }
 
-  createRightDiv(card_div, singleBook_arr, book_id) {
+  #createRightDiv(card_div, singleBook_arr, book_id) {
     const card_right_div = document.createElement('div');
     card_right_div.setAttribute('class', 'card-right-div');
     card_div.appendChild(card_right_div);
@@ -94,7 +94,7 @@ export class Display {
             img_credit_txt = singleBook_arr[i + 2];
           }
 
-          
+
           p.innerHTML = `<span class="cred-span card-right-div-paras-title">Credit: </span>` + img_credit_txt;
           p.setAttribute('id', `${p_span_txt_arr[4]}-${book_id}`);
         } else {
@@ -136,7 +136,7 @@ export class Display {
     return card_right_div;
   }
 
-  createCardControls(card_right_div, book_id) {
+  #createCardControls(card_right_div, book_id) {
     const card_cntrls = document.createElement('div');
     card_cntrls.setAttribute('class', 'card-controls');
     card_right_div.appendChild(card_cntrls);
@@ -170,7 +170,7 @@ export class Display {
 
   showHideCardControls(book_id) {
     const cardEle = document.getElementById(`card-${book_id}`);
-    let events = ['mouseenter', 'mouseleave'];
+    const events = ['mouseenter', 'mouseleave'];
     events.forEach(mouse_event => cardEle.addEventListener(mouse_event, (e) => {
       const card_controls = cardEle.querySelector('.card-controls');
       card_controls.childNodes.forEach((child, idx) => {

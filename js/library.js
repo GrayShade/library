@@ -4,18 +4,21 @@ import { Validation } from './validation.js';
 
 class Main {
   constructor() {
+
   }
 
   start() {
     (function createObjects() {
-      this.bookObj = new Book();
+      // this.bookObj = new Book();
       this.displayObj = new Display();
       this.validationObj = new Validation();
     }).call(this); // using call to manually bind << this >>
     this.#addDefaultBooks();
-    this.#displayLibraryBooks(this.bookObj.myLibrary);
+    this.#displayLibraryBooks(this.myLibrary);
     this.#setModal();
   }
+
+  myLibrary = [];
 
   #addDefaultBooks() {
 
@@ -47,9 +50,40 @@ class Main {
 
     for (let book_obj of default_books) {
       let book_arr = Object.values(book_obj)
-      this.bookObj.addBookToLibrary(book_arr);
+      let bookObj = new Book(book_arr);
+      this.#addBookToLibrary(bookObj);
     }
 
+  }
+
+  #addBookToLibrary(book_obj) {
+    if (this.myLibrary.push(book_obj)) {
+      return true;
+    }
+    return false;
+  }
+
+  #removeBookFromLibrary(book_id) {
+    for (let i = 0; i < this.myLibrary.length; i++) {
+      if (book_id == this.myLibrary[i]['id']) {
+        this.myLibrary.splice(i, 1);
+        break;
+      }
+
+    }
+  }
+
+  #changeReadStatus(book_id, checked) {
+    for (let i = 0; i < this.myLibrary.length; i++) {
+      if (book_id == this.myLibrary[i]['id']) {
+        if (checked) {
+          this.myLibrary[i]['read'] = 'Yes';
+          return this.myLibrary[i]['read']
+        }
+        this.myLibrary[i]['read'] = 'No';
+        return this.myLibrary[i]['read']
+      }
+    }
   }
 
   #displayLibraryBooks(myLibrary) {
@@ -68,21 +102,21 @@ class Main {
     // remember that 'submit' event works only for form, not for buttons:
 
     const inputs = document.querySelectorAll('.form-inputs');
-    for(let input of inputs) {
+    for (let input of inputs) {
       input.addEventListener(('input'), e => {
         const ele_name = e.target.name;
         const ele_message = `${ele_name}-message`;
         this.validationObj.validateBeforeSubmit(e, ele_name, ele_message);
       });
     }
-    
+
     form.addEventListener(('submit'), e => {
       const req_inputs = document.querySelectorAll('input.required');
       const req_msg_spans = document.querySelectorAll('span.required');
       let req_fields_status = false;
       let optional_fields_status = false;
       for (let i = 0; i < req_inputs.length; i++) {
-        req_fields_status = this.validationObj.validateRequiredAfterSubmit(req_inputs[i], req_msg_spans[i], this.bookObj.myLibrary);
+        req_fields_status = this.validationObj.validateRequiredAfterSubmit(req_inputs[i], req_msg_spans[i], this.myLibrary);
       }
       const optional_inputs = document.querySelectorAll('input.optional');
       const optional_spans = document.querySelectorAll('span.optional');
@@ -99,8 +133,8 @@ class Main {
   }
   #processModal(e) {
     let input_values_arr = [];
-    let maxBookID = this.bookObj.myLibrary[0]['id'];
-    for (let bookObj of this.bookObj.myLibrary) {
+    let maxBookID = this.myLibrary[0]['id'];
+    for (let bookObj of this.myLibrary) {
       if (maxBookID < bookObj['id']) {
         maxBookID = bookObj['id'];
       }
@@ -109,14 +143,16 @@ class Main {
     let book_id = maxBookID + 1;
     input_values_arr.push(book_id);
     const req_inputs_arr = document.querySelectorAll('.form-inputs');
-    
+
     req_inputs_arr.forEach((_ele, idx) => {
-        
-        input_values_arr.push(req_inputs_arr[idx].value);
+
+      input_values_arr.push(req_inputs_arr[idx].value);
     });
     input_values_arr = this.validationObj.handleNullEtc(input_values_arr);
     // First add book to library, then show card:
-    if (this.bookObj.addBookToLibrary(input_values_arr)) {
+    let book_obj = new Book(input_values_arr);
+
+    if (this.#addBookToLibrary(book_obj)) {
       this.#addCard(input_values_arr, book_id);
     }
     else {
@@ -128,7 +164,7 @@ class Main {
   }
 
   #addCard(singleBook_arr, book_id) {
-    
+
     this.displayObj.addCard(singleBook_arr, book_id);
     this.displayObj.showHideCardControls(book_id);
     this.#processCardControls(book_id);
@@ -155,13 +191,13 @@ class Main {
   }
 
   #processRemoveControl(book_id) {
-    
+
     this.displayObj.removeCardFromDisplay(book_id);
-    this.bookObj.removeBookFromLibrary(book_id);
+    this.#removeBookFromLibrary(book_id);
   }
 
   #processChangeStatusControl(book_id, checked) {
-    const read_status = this.bookObj.changeReadStatus(book_id, checked);
+    const read_status = this.#changeReadStatus(book_id, checked);
     this.displayObj.displayChangedStatus(book_id, read_status);
   }
 
