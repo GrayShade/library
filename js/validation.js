@@ -1,6 +1,6 @@
 export class Validation {
   constructor() {
-    this.setEventListeners();
+    this.#setEventListeners();
   }
   validateBeforeSubmit(e, ele_name, ele_message) {
     // const ele_name = 
@@ -43,7 +43,7 @@ export class Validation {
 
 
   }
-  setEventListeners() {
+  #setEventListeners() {
     // if tooltip is shown & user moves to next element, tooltip should hide:
     document.addEventListener('focusout', (e) => {
       // <<focusout is firing on every element of document, so returning if

@@ -12,12 +12,12 @@ class Main {
       this.displayObj = new Display();
       this.validationObj = new Validation();
     }).call(this); // using call to manually bind << this >>
-    this.addDefaultBooks();
-    this.displayLibraryBooks(this.bookObj.myLibrary);
-    this.setModal();
+    this.#addDefaultBooks();
+    this.#displayLibraryBooks(this.bookObj.myLibrary);
+    this.#setModal();
   }
 
-  addDefaultBooks() {
+  #addDefaultBooks() {
 
     let default_books = [
       {
@@ -52,17 +52,17 @@ class Main {
 
   }
 
-  displayLibraryBooks(myLibrary) {
+  #displayLibraryBooks(myLibrary) {
 
     myLibrary.forEach((book_obj, idx) => {
       let singleBook_arr = Object.values(book_obj);
       const book_id = singleBook_arr[0];
-      this.addCard(singleBook_arr, book_id);
+      this.#addCard(singleBook_arr, book_id);
 
     });
 
   }
-  setModal() {
+  #setModal() {
     this.displayObj.setModal();
     const form = document.getElementById('form');
     // remember that 'submit' event works only for form, not for buttons:
@@ -93,11 +93,11 @@ class Main {
         }
       }
       if (req_fields_status == true && optional_fields_status == true) {
-        this.processModal(e);
+        this.#processModal(e);
       }
     });
   }
-  processModal(e) {
+  #processModal(e) {
     let input_values_arr = [];
     let maxBookID = this.bookObj.myLibrary[0]['id'];
     for (let bookObj of this.bookObj.myLibrary) {
@@ -117,55 +117,55 @@ class Main {
     input_values_arr = this.validationObj.handleNullEtc(input_values_arr);
     // First add book to library, then show card:
     if (this.bookObj.addBookToLibrary(input_values_arr)) {
-      this.addCard(input_values_arr, book_id);
+      this.#addCard(input_values_arr, book_id);
     }
     else {
       // convert below to try catch for any errors:
       alert("Book can't be added to library for some reason");
     }
-    this.resetModal();
+    this.#resetModal();
 
   }
 
-  addCard(singleBook_arr, book_id) {
+  #addCard(singleBook_arr, book_id) {
     
     this.displayObj.addCard(singleBook_arr, book_id);
     this.displayObj.showHideCardControls(book_id);
-    this.processCardControls(book_id);
+    this.#processCardControls(book_id);
   }
 
 
 
-  processCardControls(book_id) {
+  #processCardControls(book_id) {
     const remove_icon = document.getElementById(`card-controls-remove-icon-${book_id}`);
     const read_check = document.getElementById(`card${book_id}_status`);
     const controls_arr = [remove_icon, read_check];
     for (let ele of controls_arr) {
       ele.addEventListener('click', e => {
         if (e.target.id == `card-controls-remove-icon-${book_id}`) {
-          this.processRemoveControl(book_id);
+          this.#processRemoveControl(book_id);
 
         } else
           if (e.target.id == `card${book_id}_status`) {
             let checked = e.target.checked;
-            this.processChangeStatusControl(book_id, checked);
+            this.#processChangeStatusControl(book_id, checked);
           }
       });
     }
   }
 
-  processRemoveControl(book_id) {
+  #processRemoveControl(book_id) {
     
     this.displayObj.removeCardFromDisplay(book_id);
     this.bookObj.removeBookFromLibrary(book_id);
   }
 
-  processChangeStatusControl(book_id, checked) {
+  #processChangeStatusControl(book_id, checked) {
     const read_status = this.bookObj.changeReadStatus(book_id, checked);
     this.displayObj.displayChangedStatus(book_id, read_status);
   }
 
-  resetModal() {
+  #resetModal() {
     this.displayObj.resetModal();
   }
 

@@ -1,6 +1,6 @@
 export class Display {
   constructor() {
-
+    
   }
   displayBooks(myLibrary) {
     console.log(myLibrary);
@@ -214,4 +214,5 @@ export class Display {
       message.value = '';
     }
   }
+
 }

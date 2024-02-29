@@ -1,4 +1,5 @@
 export class Book {
+
   constructor() {
     this.id;
     this.title;
