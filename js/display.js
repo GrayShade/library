@@ -10,7 +10,7 @@ export class Display {
     const modal = document.getElementById('myModal');
     const btn = document.getElementById('header-btn');
     const span = document.getElementsByClassName("close")[0];
-
+    
     btn.addEventListener('click', e => {
       modal.style.display = 'block';
     });

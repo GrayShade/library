@@ -3,7 +3,6 @@ export class Validation {
     this.#setEventListeners();
   }
   validateBeforeSubmit(e, ele_name, ele_message) {
-    // const ele_name = 
     const ele_val = document.getElementById(ele_name).value;
     const message = document.getElementById(ele_message);
     const ele = e.target;
